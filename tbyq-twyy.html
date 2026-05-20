@@ -963,7 +963,7 @@
 <ul>
   <li>سيكون وحدة التحكم<b> <bdi dir="ltr" class="odt-ltr-term">main.php</bdi> </b>هي وحدة التحكم العامة الموصوفة أعلاه
   </li>
-  <li>يتم إرسال طلب العميل إلى وحدة التحكم في شكل استعلام بالصيغة <b><bdi dir="ltr" class="odt-ltr-term">main.php</bdi>?<bdi dir="ltr" class="odt-ltr-term">action</bdi>=<bdi dir="ltr" class="odt-ltr-term">xx</bdi></b>. تحدد قيمة معلمة الإجراء البرنامج النصي الذي سيتم تنفيذه في كتلة <b><bdi dir="ltr" class="odt-ltr-term">ACTIONS</bdi></b>. يعيد البرنامج النصي للإجراء الذي تم تنفيذه متغيرًا إلى وحدة التحكم يشير إلى الحالة التي يجب أن يوضع فيها تطبيق الويب. وبناءً على هذه الحالة، ستقوم وحدة التحكم بتنشيط أحد مولدات العرض لإرسال الاستجابة إلى العميل.
+  <li>يتم إرسال طلب العميل إلى وحدة التحكم في شكل استعلام بالصيغة <b><bdi dir="ltr" class="odt-ltr-term">main.php</bdi>?<bdi dir="ltr" class="odt-ltr-term">action</bdi>=xx</b>. تحدد قيمة معلمة الإجراء البرنامج النصي الذي سيتم تنفيذه في كتلة <b><bdi dir="ltr" class="odt-ltr-term">ACTIONS</bdi></b>. يعيد البرنامج النصي للإجراء الذي تم تنفيذه متغيرًا إلى وحدة التحكم يشير إلى الحالة التي يجب أن يوضع فيها تطبيق الويب. وبناءً على هذه الحالة، ستقوم وحدة التحكم بتنشيط أحد مولدات العرض لإرسال الاستجابة إلى العميل.
   </li>
   <li><b><bdi dir="ltr" class="odt-ltr-term">impots-data.php</bdi> </b>هي الفئة المسؤولة عن تزويد وحدة التحكم بالبيانات التي تحتاجها
   </li>
@@ -2279,7 +2279,7 @@
 <p>لاحظ أن التطبيق يستخدم نفس الإجراءات كما في السابق. لم يتغير سوى شكل الردود.</p>
 <p><a id="refheading30038107341754"></a></p>
 <h3 id="4163">4.16.3. <span style="color: #4f81bd">طرق العرض الأساسية</span></h3>
-<p>سيتم ربط العرض الأساسي [<bdi dir="ltr" class="odt-ltr-term">view1</bdi>] بالبرنامج النصي <strong><bdi dir="ltr" class="odt-ltr-term">v-bandeau</bdi></strong>.<strong><bdi dir="ltr" class="odt-ltr-term">php</bdi></strong>، كما في المثال السابق:</p>
+<p>سيتم ربط العرض الأساسي [<bdi dir="ltr" class="odt-ltr-term">view1</bdi>] بالبرنامج النصي <strong><bdi dir="ltr" class="odt-ltr-term">v-bandeau</bdi></strong>.<strong>php</strong>، كما في المثال السابق:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
 <a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
 <a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;univ01.gif&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
@@ -2322,7 +2322,7 @@
 <ul>
   <li><b>$<bdi dir="ltr" class="odt-ltr-term">dResponse</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">links</bdi>&#x27;]</b>: مصفوفة من الروابط لعرضها في [<bdi dir="ltr" class="odt-ltr-term">view2</bdi>]. كل عنصر في المصفوفة عبارة عن قاموس يحتوي على مفتاحين:
     <ul>
-      <li><b>&#x27;<bdi dir="ltr" class="odt-ltr-term">url</bdi></b>&#x27;: عنوان <bdi dir="ltr" class="odt-ltr-term">URL</bdi> الهدف للرابط
+      <li><b>&#x27;url</b>&#x27;: عنوان <bdi dir="ltr" class="odt-ltr-term">URL</bdi> الهدف للرابط
       </li>
       <li><b>&#x27;<bdi dir="ltr" class="odt-ltr-term">text</bdi></b>&#x27;: نص الرابط
       </li>
