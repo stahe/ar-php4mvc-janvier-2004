@@ -18,7 +18,7 @@
         <link rel="prev" href="index.html">
       
       
-        <link rel="next" href="nhj-twyr-mvc-llwybphp.html">
+        <link rel="next" href="nhj-twyr-mvc-fy-lwybphp.html">
       
       
         
@@ -342,14 +342,14 @@
   
   
     <li class="md-nav__item">
-      <a href="nhj-twyr-mvc-llwybphp.html" class="md-nav__link">
+      <a href="nhj-twyr-mvc-fy-lwybphp.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. نهج تطوير MVC للويب/PHP
+    2. نهج تطوير MVC في الويب/PHP
   
 
     
@@ -433,38 +433,38 @@
 
 
 
-<p><a id="refheading29946107341754"></a></p>
+<p><span id="refheading29946107341754" name="refheading29946107341754" class="odt-bookmark-anchor"></span></p>
 <h1 id="1-mvc-php">1. <span style="color: #365f91">استخدام بنية <bdi dir="ltr" class="odt-ltr-term">MVC</bdi> في تطبيقات الويب/<bdi dir="ltr" class="odt-ltr-term">PHP</bdi></span></h1>
-<p>ملف <bdi dir="ltr" class="odt-ltr-term">PDF</bdi> للوثيقة متاح |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQBUCOkr73IWRbrc-C9XlGl5AU-3J5fC8llkBLyiwfC3DgE?e=8Htbfa">هنا</a>|.</p>
-<p>كود المستند متاح |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQDgz1c4n6lMQ4WX_YSZCzLsAYqKTSV5K2jUvNmleRC5GWo?e=uBuCq4">هنا</a>|.</p>
-<p>يهدف نمط <bdi dir="ltr" class="odt-ltr-term">MVC</bdi> (<bdi dir="ltr" class="odt-ltr-term">Model-View-Controller</bdi>) إلى الفصل بوضوح بين طبقات العرض والمعالجة والوصول إلى البيانات. سيتم تنظيم تطبيق الويب الذي يتبع هذا النمط على النحو التالي:</p>
+<p>يتوفر <bdi dir="ltr" class="odt-ltr-term">PDF</bdi> الخاص بالمستند |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQBUCOkr73IWRbrc-C9XlGl5AU-3J5fC8llkBLyiwfC3DgE?e=jcXaa1"><bdi dir="ltr" class="odt-ltr-term">HERE</bdi></a>|.</p>
+<p>أكواد المستند متاحة |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQDgz1c4n6lMQ4WX_YSZCzLsAYqKTSV5K2jUvNmleRC5GWo?e=2WctNY"><bdi dir="ltr" class="odt-ltr-term">HERE</bdi></a>|.</p>
+<p>يهدف نموذج <bdi dir="ltr" class="odt-ltr-term">MVC</bdi> (نموذج-عرض-وحدة تحكم) إلى الفصل بوضوح بين طبقات العرض والمعالجة والوصول إلى البيانات. سيتم تصميم تطبيق الويب الذي يتوافق مع هذا النموذج على النحو التالي:</p>
 <table dir="rtl" class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><img src="images/1000000000000400000000BB4D654A99.png" width="512" height="94" style="display:inline-block; margin:4px;width:13.547cm;height:2.475cm;" class="odt-zoomable" data-zoom-src="images/1000000000000400000000BB4D654A99.png" /></td></tr></table>
 
-<p>غالبًا ما يُطلق على هذه البنية اسم بنية ثلاثية الطبقات أو ثلاثية المستويات:</p>
+<p>غالبًا ما يُطلق على هذه البنية اسم بنية ثلاثية الأطراف أو ثلاثية المستويات:</p>
 <ul>
 <li>واجهة المستخدم هي العرض (<bdi dir="ltr" class="odt-ltr-term">V</bdi>)</li>
-<li>منطق التطبيق هو وحدة التحكم (<bdi dir="ltr" class="odt-ltr-term">C</bdi>)</li>
+<li>المنطق التطبيقي هو وحدة التحكم (<bdi dir="ltr" class="odt-ltr-term">C</bdi>)</li>
 <li>مصادر البيانات هي النموذج (<bdi dir="ltr" class="odt-ltr-term">M</bdi>)</li>
 </ul>
-<p>غالبًا ما تكون <strong>واجهة المستخدم</strong> عبارة عن متصفح ويب، ولكنها قد تكون أيضًا تطبيقًا مستقلًا يرسل طلبات <bdi dir="ltr" class="odt-ltr-term">HTTP</bdi> إلى خدمة الويب عبر الشبكة ويقوم بتنسيق النتائج التي يتلقاها. تتكون <strong>منطقية التطبيق</strong> من نصوص برمجية تعالج طلبات المستخدم. غالبًا ما يكون <strong>مصدر البيانات</strong> قاعدة بيانات، ولكنه قد يكون أيضًا ملفات مسطحة بسيطة، أو دليل <bdi dir="ltr" class="odt-ltr-term">LDAP</bdi>، أو خدمة ويب عن بُعد، وما إلى ذلك. من مصلحة المطور الحفاظ على درجة عالية من الاستقلالية بين هذه الكيانات الثلاثة بحيث إذا تغير أحدها، لا يتعين على الاثنين الآخرين التغيير، أو يتغيران بشكل طفيف فقط.</p>
-<p>تعد بنية <bdi dir="ltr" class="odt-ltr-term">MVC</bdi> مناسبة تمامًا لتطبيقات الويب المكتوبة بلغات موجهة للكائنات. لغة <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> (4.x) ليست موجهة للكائنات. ومع ذلك، يمكن للمرء أن يبذل جهدًا لتنظيم الكود وبنية التطبيق بحيث تتوافق بشكل أوثق مع نموذج <bdi dir="ltr" class="odt-ltr-term">MVC:</bdi></p>
+<p>غالبًا ما تكون <strong>واجهة المستخدم</strong> عبارة عن متصفح ويب، ولكنها قد تكون أيضًا تطبيقًا مستقلًا يرسل طلبات عبر الشبكة إلى خدمة الويب ويقوم بتنسيق النتائج التي ترسلها إليه. تتكون <strong>منطق التطبيق</strong> من البرامج النصية التي تعالج طلبات المستخدم. غالبًا ما تكون <strong>مصدر البيانات</strong> قاعدة بيانات، ولكنها قد تكون أيضًا ملفات نصية بسيطة، أو دليل <bdi dir="ltr" class="odt-ltr-term">LDAP</bdi>، أو خدمة ويب بعيدة،... من مصلحة المطور الحفاظ على استقلالية كبيرة بين هذه الكيانات الثلاثة بحيث إذا تغير أحدها، لا يتعين على الاثنين الآخرين التغيير أو يتغيران قليلاً.</p>
+<p>تتناسب بنية <bdi dir="ltr" class="odt-ltr-term">MVC</bdi> جيدًا مع تطبيقات الويب المكتوبة بلغات موجهة للكائنات. لغة <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> (4.x) ليست موجهة للكائنات. ومع ذلك، يمكن بذل جهد لتنظيم الكود وبنية التطبيق من أجل الاقتراب من نموذج <bdi dir="ltr" class="odt-ltr-term">MVC:</bdi></p>
 <ul>
-<li>سنضع منطق الأعمال الخاص بالتطبيق في وحدات منفصلة عن تلك المسؤولة عن إدارة الحوار بين الطلب والاستجابة. تصبح بنية <bdi dir="ltr" class="odt-ltr-term">MVC</bdi> كما يلي:</li>
+<li>سنضع منطق العمل الخاص بالتطبيق في وحدات منفصلة عن الوحدات المسؤولة عن التحكم في الحوار بين الطلب والاستجابة. تصبح بنية <bdi dir="ltr" class="odt-ltr-term">MVC</bdi> كما يلي:</li>
 </ul>
 <table dir="rtl" class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><img src="images/100000000000061F000001BFD28D9CBA.png" width="680" height="194" style="display:inline-block; margin:4px;width:17.999cm;height:5.135cm;" class="odt-zoomable" data-zoom-src="images/100000000000061F000001BFD28D9CBA.png" /></td></tr></table>
 
-<p>داخل كتلة [منطق التطبيق]، يمكننا التمييز بين:</p>
+<p>في الكتلة [<bdi dir="ltr" class="odt-ltr-term">Logique Applicative</bdi>]، يمكننا التمييز بين:</p>
 <ul>
-<li>البرنامج الرئيسي أو وحدة التحكم، التي تعمل كنقطة دخول للتطبيق.</li>
-<li>كتلة [الإجراءات]، وهي مجموعة من البرامج النصية المسؤولة عن تنفيذ الإجراءات التي يطلبها المستخدم.</li>
-<li>كتلة [فئات الأعمال]، التي تجمع وحدات <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> الضرورية لمنطق التطبيق. هذه الوحدات مستقلة عن العميل. على سبيل المثال، لا تحتاج الدالة التي تحسب الضريبة بناءً على معلومات معينة مقدمة كمعلمات إلى الاهتمام بكيفية الحصول على تلك المعلومات.</li>
-<li>كتلة [<bdi dir="ltr" class="odt-ltr-term">Data Access Classes</bdi>]، التي تحتوي على وحدات <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> التي تسترد البيانات التي يحتاجها وحدة التحكم، وغالبًا ما تكون بيانات ثابتة (قواعد البيانات، الملفات، إلخ).</li>
-<li>مولدات العرض التي ترسل العروض كاستجابة للعميل. </li>
+<li>البرنامج الرئيسي أو وحدة التحكم، وهو بوابة الدخول إلى التطبيق.</li>
+<li>الكتلة [<bdi dir="ltr" class="odt-ltr-term">Actions</bdi>]، وهي مجموعة من البرامج النصية المسؤولة عن تنفيذ الإجراءات التي يطلبها المستخدم.</li>
+<li>الكتلة [<bdi dir="ltr" class="odt-ltr-term">Classes métier</bdi>] التي تضم وحدات php اللازمة لمنطق التطبيق. وهي مستقلة عن العميل. على سبيل المثال، لا تحتاج الوظيفة التي تسمح بحساب ضريبة بناءً على معلومات معينة يتم تزويدها بها كمعلمات، إلى الاهتمام بالطريقة التي تم الحصول بها على هذه المعلومات.</li>
+<li>الكتلة [<bdi dir="ltr" class="odt-ltr-term">Classes d</bdi>&#x27;<bdi dir="ltr" class="odt-ltr-term">accès aux données</bdi>] التي تضم وحدات php التي تحصل على البيانات اللازمة لوحدة التحكم، وغالبًا ما تكون بيانات دائمة (<bdi dir="ltr" class="odt-ltr-term">BD</bdi>، ملفات، ...)</li>
+<li>مولدات العروض المرسلة كرد للعميل. </li>
 </ul>
-<p>في أبسط الحالات، غالبًا ما يتم اختزال منطق التطبيق إلى وحدتين:</p>
+<p>في الحالات الأبسط، غالبًا ما تقتصر منطقية التطبيق على وحدتين:</p>
 <ul>
-<li>وحدة [التحكم] التي تتولى الاتصال بين العميل والخادم: معالجة الطلب، وإنشاء استجابات متنوعة</li>
-<li>وحدة [منطق الأعمال]، التي تتلقى البيانات المراد معالجتها من وحدة [وحدة التحكم] وتزودها بالنتائج في المقابل. ثم تدير وحدة [منطق الأعمال] هذه الوصول إلى البيانات الدائمة بنفسها.</li>
+<li>الوحدة النمطية [<bdi dir="ltr" class="odt-ltr-term">contrôle</bdi>] التي تضمن الحوار بين العميل والخادم: معالجة الطلب، وتوليد الردود المختلفة</li>
+<li>الوحدة النمطية [<bdi dir="ltr" class="odt-ltr-term">métier</bdi>] التي تتلقى من الوحدة النمطية [<bdi dir="ltr" class="odt-ltr-term">contrôle</bdi>] البيانات المطلوب معالجتها وتزودها بالنتائج في المقابل. ثم تدير هذه الوحدة النمطية [<bdi dir="ltr" class="odt-ltr-term">métier</bdi>] بنفسها الوصول إلى البيانات الدائمة.</li>
 </ul>
 
 

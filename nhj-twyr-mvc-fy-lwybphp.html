@@ -12,7 +12,7 @@
         <meta name="author" content="Serge Tahé">
       
       
-        <link rel="canonical" href="https://stahe.github.io/ar-php4mvc-janvier-2004/nhj-twyr-mvc-llwybphp.html">
+        <link rel="canonical" href="https://stahe.github.io/ar-php4mvc-janvier-2004/nhj-twyr-mvc-fy-lwybphp.html">
       
       
         <link rel="prev" href="stkhdm-bny-mvc-fy-tbyqt-lwybphp.html">
@@ -29,7 +29,7 @@
     
     
       
-        <title>2. نهج تطوير MVC للويب/PHP - منهجية تطوير MVC لتطبيق ويب PHP4</title>
+        <title>2. نهج تطوير MVC في الويب/PHP - منهجية تطوير MVC لتطبيق ويب PHP4</title>
       
     
     
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2. نهج تطوير MVC للويب/PHP
+              2. نهج تطوير MVC في الويب/PHP
             
           </span>
         </div>
@@ -341,14 +341,14 @@
         
       
       
-      <a href="nhj-twyr-mvc-llwybphp.html" class="md-nav__link md-nav__link--active">
+      <a href="nhj-twyr-mvc-fy-lwybphp.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. نهج تطوير MVC للويب/PHP
+    2. نهج تطوير MVC في الويب/PHP
   
 
     
@@ -433,31 +433,31 @@
 
 
 
-<p><a id="refheading29948107341754"></a></p>
-<h1 id="2-mvc-php">2. <span style="color: #365f91">نهج تطوير <bdi dir="ltr" class="odt-ltr-term">MVC</bdi> للويب/<bdi dir="ltr" class="odt-ltr-term">PHP</bdi></span></h1>
-<p>نقترح هنا نهجًا لتطوير تطبيقات الويب/<bdi dir="ltr" class="odt-ltr-term">PHP</bdi> التي تتبع بنية <bdi dir="ltr" class="odt-ltr-term">MVC.</bdi> ويهدف هذا النهج فقط إلى توفير نقطة انطلاق. وعلى القارئ تكييفه وفقًا لتفضيلاته واحتياجاته الخاصة.</p>
+<p><span id="refheading29948107341754" name="refheading29948107341754" class="odt-bookmark-anchor"></span></p>
+<h1 id="2-mvc-php">2. <span style="color: #365f91">نهج تطوير <bdi dir="ltr" class="odt-ltr-term">MVC</bdi> في الويب/<bdi dir="ltr" class="odt-ltr-term">PHP</bdi></span></h1>
+<p>نقترح هنا نهجًا لتطوير تطبيقات الويب/<bdi dir="ltr" class="odt-ltr-term">PHP</bdi> التي تتوافق مع بنية <bdi dir="ltr" class="odt-ltr-term">MVC.</bdi> وهذا النهج موجود فقط لفتح آفاق جديدة. وسيقوم القارئ بتكييفه وفقًا لذوقه واحتياجاته.</p>
 <ol>
-<li>سنبدأ بتحديد جميع طرق عرض التطبيق. وهي عبارة عن صفحات الويب التي تظهر للمستخدم. وسنتبنى منظور المستخدم عند تصميم طرق العرض. هناك ثلاثة أنواع من طرق العرض:<ul>
-<li><strong>نموذج الإدخال</strong>، المصمم لجمع المعلومات من المستخدم. وعادةً ما يتضمن زرًا لإرسال المعلومات المدخلة إلى الخادم.</li>
-<li><strong>صفحة</strong> الاستجابة، التي تخدم فقط لتوفير المعلومات للمستخدم. غالبًا ما تتضمن رابطًا واحدًا أو أكثر يسمح للمستخدم بمواصلة استخدام التطبيق على صفحة أخرى.</li>
-<li><strong>الصفحة المختلطة</strong>: أرسلت وحدة التحكم إلى العميل صفحة تحتوي على معلومات قامت بإنشائها. سيستخدم العميل هذه الصفحة نفسها لتزويد وحدة التحكم بمعلومات جديدة من المستخدم.</li>
+<li>سنبدأ بتحديد جميع طرق عرض التطبيق. وهي عبارة عن صفحات الويب التي تظهر للمستخدم. سنضع أنفسنا في مكان المستخدم لرسم طرق العرض. نتميز بين ثلاثة أنواع من طرق العرض:<ul>
+<li><strong>نموذج الإدخال</strong> الذي يهدف إلى الحصول على معلومات من المستخدم. ويحتوي هذا النموذج عمومًا على زر لإرسال المعلومات المدخلة إلى الخادم.</li>
+<li><strong>صفحة الرد</strong> التي لا تخدم سوى تقديم المعلومات للمستخدم. غالبًا ما تحتوي هذه الصفحة على رابط واحد أو أكثر يسمح للمستخدم بمتابعة التطبيق بصفحة أخرى.</li>
+<li><strong>الصفحة المختلطة</strong>: أرسل المتحكم إلى العميل صفحة تحتوي على معلومات قام بتوليدها. ستستخدم هذه الصفحة نفسها من قبل العميل لتزويد المتحكم بمعلومات جديدة من المستخدم.</li>
 </ul>
 </li>
 </ol>
 <ol start="2">
-  <li>ستنشئ كل طريقة عرض صفحة <bdi dir="ltr" class="odt-ltr-term">PHP.</bdi> بالنسبة لكل منها:
+  <li>ستنشأ عن كل عرض صفحة <bdi dir="ltr" class="odt-ltr-term">PHP.</bdi> بالنسبة لكل منها:
     <ul>
-      <li>سنقوم بتصميم تخطيط الصفحة
+      <li>سنرسم شكل الصفحة
       </li>
-      <li>سنحدد أي أجزاء منها ديناميكية:
+      <li>سيتم تحديد الأجزاء الديناميكية منها:
         <ul>
-          <li>المعلومات المخصصة للمستخدم والتي يجب أن يوفرها وحدة التحكم كمعلمات لعرض <bdi dir="ltr" class="odt-ltr-term">PHP.</bdi> الحل البسيط هو كما يلي:
+          <li>المعلومات الموجهة للمستخدم والتي يجب أن يوفرها وحدة التحكم كمعلمات للعرض <bdi dir="ltr" class="odt-ltr-term">PHP.</bdi> الحل البسيط هو التالي:
             <ul>
-              <li>تضع وحدة التحكم المعلومات التي تريد توفيرها لعرض <bdi dir="ltr" class="odt-ltr-term">V</bdi> في قاموس <b>$<bdi dir="ltr" class="odt-ltr-term">dResponse</bdi></b>
+              <li>يضع وحدة التحكم في قاموس <b>$<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi> </b>المعلومات التي يريد توفيرها لعرض <bdi dir="ltr" class="odt-ltr-term">V</bdi>
               </li>
-              <li>يعرض وحدة التحكم العرض <bdi dir="ltr" class="odt-ltr-term">V.</bdi> إذا كان هذا يتوافق مع الملف المصدر <b><bdi dir="ltr" class="odt-ltr-term">V.</bdi></b>php، يتم تحقيق هذا العرض ببساطة عن طريق عبارة<b> <bdi dir="ltr" class="odt-ltr-term">include V.php</bdi></b>.
+              <li>يقوم المتحكم بعرض العرض <bdi dir="ltr" class="odt-ltr-term">V.</bdi> إذا كان هذا العرض يتوافق مع الملف المصدر <bdi dir="ltr" class="odt-ltr-term">V.php</bdi>، يتم الحصول على هذا العرض ببساطة من خلال الأمر <b><bdi dir="ltr" class="odt-ltr-term">include V.php</bdi></b>.
               </li>
-              <li>التضمين السابق هو تضمين كود داخل وحدة التحكم. يمكن الوصول إلى القاموس <b>$<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi></b> الذي تم ملؤه بواسطة وحدة التحكم مباشرةً من خلال الكود في <b><bdi dir="ltr" class="odt-ltr-term">V.php</bdi></b>.
+              <li>التضمين السابق هو تضمين كود في وحدة التحكم. يمكن الوصول إلى القاموس <b>$<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi></b> الذي تم ملؤه بواسطة وحدة التحكم مباشرةً من خلال كود <b><bdi dir="ltr" class="odt-ltr-term">V.php</bdi></b>.
               </li>
             </ul>
           </li>
@@ -470,27 +470,27 @@
 </ol>
 
 <ol start="3">
-  <li>يمكننا تخطيط الإدخال/الإخراج لكل عرض 
+  <li>يمكننا تمثيل مدخلات ومخرجات كل عرض بشكل تخطيطي 
   </li>
 </ol>
 
-<table dir="rtl" class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><img src="images/100000000000037500000083B3B63FBF.png" width="443" height="65" style="display:inline-block; margin:4px;width:11.709cm;height:1.732cm;" class="odt-zoomable" data-zoom-src="images/100000000000037500000083B3B63FBF.png" /></td></tr></table>
+<table dir="rtl" class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><img src="images/100000000000037500000083B3B63FBF.png" width="443" height="66" style="display:inline-block; margin:4px;width:11.709cm;height:1.734cm;" class="odt-zoomable" data-zoom-src="images/100000000000037500000083B3B63FBF.png" /></td></tr></table>
 
 <ul>
-  <li>المدخلات هي البيانات التي يجب أن يوفرها وحدة التحكم لصفحة <bdi dir="ltr" class="odt-ltr-term">PHP</bdi>
+  <li>المدخلات هي البيانات التي يجب أن يوفرها وحدة التحكم للصفحة <bdi dir="ltr" class="odt-ltr-term">PHP</bdi>
   </li>
-  <li>المخرجات هي البيانات التي يجب أن توفرها صفحة <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> لوحدة التحكم في التطبيق. وهي جزء من نموذج <bdi dir="ltr" class="odt-ltr-term">HTML</bdi>، وستقوم وحدة التحكم باستردادها باستخدام عملية مثل <b>$_GET[&quot;<bdi dir="ltr" class="odt-ltr-term">param</bdi>&quot;] </b>(طريقة <bdi dir="ltr" class="odt-ltr-term">GET</bdi>) أو <b>$_POST[&quot;<bdi dir="ltr" class="odt-ltr-term">param</bdi>&quot;] </b>(طريقة <bdi dir="ltr" class="odt-ltr-term">POST</bdi>).
+  <li>المخرجات هي البيانات التي يجب أن توفرها الصفحة <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> لوحدة التحكم في التطبيق. وهي جزء من نموذج <bdi dir="ltr" class="odt-ltr-term">HTML</bdi> وسيستردها وحدة التحكم من خلال عملية من النوع <b>$_GET[&quot;<bdi dir="ltr" class="odt-ltr-term">param</bdi>&quot;]</b> (طريقة <bdi dir="ltr" class="odt-ltr-term">GET</bdi>) أو <b>$_POST[&quot;<bdi dir="ltr" class="odt-ltr-term">param</bdi>&quot;] </b>(طريقة <bdi dir="ltr" class="odt-ltr-term">POST</bdi>).
   </li>
 </ul>
 
 <ol start="4">
-  <li>في كثير من الأحيان، لا تكون الصفحة النهائية المرسلة إلى العميل عرضًا واحدًا بل تجميعًا من العروض. على سبيل المثال، قد تبدو الصفحة المرسلة إلى المستخدم كما يلي:
+  <li>في كثير من الأحيان، لا تكون الصفحة النهائية المرسلة إلى العميل عبارة عن عرض واحد، بل مجموعة من العروض. على سبيل المثال، قد تكون الصفحة المرسلة إلى المستخدم  بالشكل التالي:
   </li>
 </ol>
 
 <table dir="rtl" class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><img src="images/100000000000023D0000010983D41FDC.png" width="287" height="133" style="display:inline-block; margin:4px;width:7.581cm;height:3.507cm;" class="odt-zoomable" data-zoom-src="images/100000000000023D0000010983D41FDC.png" /></td></tr></table>
 
-<p>يمكن أن تكون المنطقة 1 لافتة رأس الصفحة، والمنطقة 2 لافتة قائمة، والمنطقة 3 منطقة محتوى. في <bdi dir="ltr" class="odt-ltr-term">PHP</bdi>، يمكن تحقيق هذا التكوين باستخدام كود <bdi dir="ltr" class="odt-ltr-term">HTML/PHP</bdi> التالي:</p>
+<p>قد تكون المنطقة 1 شريط عنوان، والمنطقة 2 شريط قائمة، والمنطقة 3 منطقة محتوى. في <bdi dir="ltr" class="odt-ltr-term">PHP</bdi>، يمكن الحصول على هذا التكوين من خلال الكود <bdi dir="ltr" class="odt-ltr-term">HTML/PHP</bdi> التالي:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span><span class="cp">&lt;?php include zone1.php ?&gt;</span><span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
@@ -501,7 +501,7 @@
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>يمكنك جعل هذا الكود ديناميكيًا بكتابة:</p>
+<p>يمكن جعل هذا الرمز ديناميكيًا بكتابة:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span><span class="cp">&lt;?php include $dReponse[&#39;urlZone1&#39;] ?&gt;</span><span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
@@ -512,23 +512,23 @@
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>يمكن أن يكون تكوين العرض هذا هو التنسيق الوحيد للاستجابة المرسلة إلى المستخدم. في هذه الحالة، يجب أن تحدد كل استجابة للعميل عناوين <bdi dir="ltr" class="odt-ltr-term">URL</bdi> الثلاثة التي سيتم تحميلها في المناطق الثلاث قبل عرض صفحة الاستجابة. يمكننا تعميم هذا المثال بتخيل وجود عدة قوالب محتملة لصفحة الاستجابة. لذلك، يجب أن تقوم الاستجابة للعميل بما يلي:</p>
+<p>قد تكون هذه المجموعة من العروض هي الشكل الوحيد للرد المقدم للمستخدم. في هذه الحالة، يجب أن تحدد كل استجابة للعميل الثلاثة <bdi dir="ltr" class="odt-ltr-term">URL</bdi> التي سيتم تحميلها في المناطق الثلاثة قبل عرض صفحة الرد. يمكن تعميم هذا المثال بتخيل وجود عدة نماذج محتملة لصفحة الرد. لذلك يجب أن تقوم الاستجابة للعميل بما يلي:</p>
 <ul>
-  <li>تحديد القالب الذي سيتم استخدامه
+  <li>تحديد النموذج المطلوب استخدامه
   </li>
-  <li>تحديد العناصر التي سيتم تضمينها فيه
+  <li>تحديد العناصر التي يجب تضمينها فيه
   </li>
-  <li>طلب عرض القالب
+  <li>طلب عرض النموذج
   </li>
 </ul>
 
-<ol start="5">
-  <li>سنكتب كود <bdi dir="ltr" class="odt-ltr-term">PHP/HTML</bdi> لكل قالب استجابة. عادةً ما يكون الكود بسيطًا. يمكن أن يكون الكود الخاص بالمثال أعلاه كما يلي:
+<ol>
+  <li>سنكتب الكود <bdi dir="ltr" class="odt-ltr-term">PHP/HTML</bdi> لكل نموذج من نماذج الرد. عادةً ما يكون الكود بسيطًا. قد يكون كود المثال أعلاه كما يلي:
   </li>
 </ol>
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="c1">// initializations for testing without a controller</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="c1">// عمليات التهيئة للاختبارات بدون وحدة تحكم</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="o">...</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cp">?&gt;</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">&lt;html&gt;</span>
@@ -549,43 +549,43 @@
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="x">  &lt;body&gt;</span>
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="x">&lt;/html&gt;</span>
 </code></pre></div>
-<p>كلما أمكن، سنستخدم ورقة أنماط حتى نتمكن من تغيير &quot;شكل&quot; الاستجابة دون الحاجة إلى تعديل كود <bdi dir="ltr" class="odt-ltr-term">PHP/HTML.</bdi></p>
+<p>سنستخدم كلما أمكن ذلك ورقة أنماط حتى نتمكن من تغيير &quot;مظهر&quot; الاستجابة دون الحاجة إلى تعديل الكود <bdi dir="ltr" class="odt-ltr-term">PHP/HTML.</bdi></p>
 <ol>
-  <li>سنكتب كود <bdi dir="ltr" class="odt-ltr-term">PHP/HTML</bdi> لكل عرض أساسي. وسيكون في الغالب بالشكل التالي:
+  <li>سنكتب الكود <bdi dir="ltr" class="odt-ltr-term">PHP/HTML</bdi> لكل عرض أساسي. وسيكون في الغالب بالشكل التالي:
   </li>
 </ol>
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>     <span class="c1">// a few initializations may be necessary, particularly in the debugging phase</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>     <span class="c1">// ربما بعض التهيئات خاصة في مرحلة التصحيح</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="o">...</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="cp">?&gt;</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="x">&lt;balise&gt;</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="x">...</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="x">         // here we&#39;ll try to minimize the php code</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="x">         // سنحاول هنا تقليل كود php</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="x">&lt;/balise&gt;</span>
 </code></pre></div>
-<p>لاحظ أن العرض الأساسي مدمج داخل قالب. يتم دمج كود <bdi dir="ltr" class="odt-ltr-term">HTML</bdi> الخاص به في كود القالب. في أغلب الأحيان، يتضمن القالب بالفعل العلامات &lt;<bdi dir="ltr" class="odt-ltr-term">html</bdi>&gt; و&lt;<bdi dir="ltr" class="odt-ltr-term">head</bdi>&gt; و&lt;<bdi dir="ltr" class="odt-ltr-term">body</bdi>&gt;. لذلك، من النادر العثور على هذه العلامات في العرض الأساسي.</p>
+<p>تجدر الإشارة إلى أن العرض الأساسي يتم دمجه في نموذج. ويتم دمج رمزه <bdi dir="ltr" class="odt-ltr-term">HTML</bdi> داخل رمز النموذج. وفي أغلب الأحيان، يتضمن هذا الأخير بالفعل العلامات &lt;<bdi dir="ltr" class="odt-ltr-term">html</bdi>&gt; و&lt;<bdi dir="ltr" class="odt-ltr-term">head</bdi>&gt; و&lt;<bdi dir="ltr" class="odt-ltr-term">body</bdi>&gt;. ولذلك، من النادر العثور على هذه العلامات في عرض أساسي.</p>
 <ol start="7">
-  <li>يمكننا المضي قدمًا في اختبار قوالب الاستجابة المختلفة وطرق العرض الأساسية
+  <li>يمكن إجراء اختبارات على مختلف نماذج الاستجابة والعروض الأساسية
   </li>
 </ol>
 
 <ul>
-  <li>يتم اختبار كل قالب استجابة. إذا كان اسم القالب <b><bdi dir="ltr" class="odt-ltr-term">modele1.</bdi></b>php، فسنطلب عنوان <bdi dir="ltr" class="odt-ltr-term">URL</bdi><b> <bdi dir="ltr" class="odt-ltr-term">http://localhost/chemin/modele1.php</bdi> </b>باستخدام متصفح. يتوقع القالب قيمًا من وحدة التحكم. هنا، نستدعيه مباشرةً بدلاً من الاستدعاء عبر وحدة التحكم. لن يتلقى القالب المعلمات المتوقعة. لتمكين الاختبار مع ذلك، سنقوم يدويًا بتهيئة المعلمات المتوقعة في صفحة <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> الخاصة بالقالب باستخدام الثوابت.
+  <li>يتم اختبار كل نموذج استجابة. إذا كان اسم النموذج هو <bdi dir="ltr" class="odt-ltr-term">modele1.php</bdi>، فسنطلب عبر المتصفح <bdi dir="ltr" class="odt-ltr-term">URL</bdi><b> <bdi dir="ltr" class="odt-ltr-term">http://localhost/chemin/modele1.php</bdi></b>. يتوقع النموذج قيمًا من وحدة التحكم. هنا يتم استدعاؤه مباشرةً وليس عبر وحدة التحكم. لن يتلقى النموذج المعلمات المتوقعة. لكي تكون الاختبارات ممكنة مع ذلك، سنقوم بأنفسنا بتهيئة المعلمات المتوقعة في صفحة النموذج <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> باستخدام الثوابت.
   </li>
-  <li>يتم اختبار كل نموذج، وكذلك جميع طرق العرض الأساسية. هذا هو الوقت المناسب أيضًا لتطوير العناصر الأولى من أوراق الأنماط المستخدمة.
+  <li>يتم اختبار كل نموذج وكذلك جميع العروض الأولية. هذا هو الوقت المناسب أيضًا لوضع العناصر الأولى من أوراق الأنماط المستخدمة.
   </li>
 </ul>
 
 <ol start="8">
-  <li>بعد ذلك، نكتب منطق التطبيق:
+  <li>ثم نكتب منطق التطبيق:
   </li>
 </ol>
 <ul>
-  <li>تتولى وحدة التحكم، أو البرنامج الرئيسي، عمومًا عدة إجراءات. يجب تحديد الإجراء المطلوب تنفيذه في الطلبات التي تتلقاها. يمكن القيام بذلك باستخدام معلمة طلب، سنسميها هنا `<b><bdi dir="ltr" class="odt-ltr-term">action</bdi></b>`:
+  <li>يدير المتحكم أو البرنامج الرئيسي عمومًا عدة إجراءات. يجب أن يتم تحديد الإجراء المطلوب تنفيذه في الطلبات التي تصل إليه. يمكن القيام بذلك عن طريق معلمة في الطلب سنسميها هنا <b><bdi dir="ltr" class="odt-ltr-term">action</bdi></b>:
     <ul>
-      <li>إذا كان الطلب قادمًا من نموذج (&lt;<bdi dir="ltr" class="odt-ltr-term">form</bdi>&gt;)، يمكن أن تكون هذه المعلمة معلمة نموذج مخفية: 
+      <li>إذا كان الطلب قادمًا من نموذج (&lt;<bdi dir="ltr" class="odt-ltr-term">form</bdi>&gt;)، فيمكن أن يكون هذا المعامل معلمة مخفية في النموذج: 
       </li>
     </ul>
   </li>
@@ -599,7 +599,7 @@
 <ul>
   <li>(تابع)
     <ul>
-      <li>إذا كان الطلب قادمًا من رابط، فيمكنك تكوينه على النحو التالي:
+      <li>إذا كان الطلب قادمًا من رابط، فيمكن ضبطه على النحو التالي:
       </li>
     </ul>
   </li>
@@ -607,14 +607,14 @@
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/C/main.php?action=uneAction&quot;</span><span class="p">&gt;</span>lien<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>يمكن أن تبدأ وحدة التحكم بقراءة قيمة هذه المعلمة، ثم تفوض معالجة الطلب إلى وحدة نمطية مسؤولة عن التعامل مع هذا النوع من الطلبات. هنا، افترضنا أن كل شيء يتم التحكم فيه بواسطة برنامج نصي واحد يُسمى <strong><bdi dir="ltr" class="odt-ltr-term">main.php</bdi></strong>. إذا احتاج التطبيق إلى معالجة الإجراءات <strong><bdi dir="ltr" class="odt-ltr-term">action1</bdi></strong> و <strong><bdi dir="ltr" class="odt-ltr-term">action2</bdi></strong> و... و <strong><bdi dir="ltr" class="odt-ltr-term">actionx</bdi></strong>، فيمكنك إنشاء دالة لكل إجراء داخل وحدة التحكم. إذا كان هناك العديد من الإجراءات، فقد يؤدي ذلك إلى وحدة تحكم &quot;ضخمة&quot;. بدلاً من ذلك، يمكن إنشاء نصوص <strong>برمجية <bdi dir="ltr" class="odt-ltr-term">action1.php</bdi></strong> و <strong><bdi dir="ltr" class="odt-ltr-term">action2.php</bdi></strong> و... و <strong><bdi dir="ltr" class="odt-ltr-term">actionx.php</bdi></strong> مسؤولة عن معالجة كل إجراء. سيقوم وحدة التحكم المكلفة بمعالجة الإجراء <strong><bdi dir="ltr" class="odt-ltr-term">actionx</bdi></strong> ببساطة بتحميل الكود من النص البرمجي المقابل باستخدام تعليمات مثل <strong><bdi dir="ltr" class="odt-ltr-term">include</bdi> &quot;<bdi dir="ltr" class="odt-ltr-term">actionx.php</bdi>&quot;</strong>. تتمثل ميزة هذه الطريقة في أنك تعمل خارج كود وحدة التحكم. وبالتالي، يمكن لكل عضو في فريق التطوير العمل على النص البرمجي الذي يعالج الإجراء <strong><bdi dir="ltr" class="odt-ltr-term">actionx</bdi></strong> بشكل مستقل نسبيًا. كما أن تضمين الكود من البرنامج النصي <strong><bdi dir="ltr" class="odt-ltr-term">actionx.php</bdi></strong> في كود وحدة التحكم أثناء وقت التشغيل له ميزة تقليل كمية الكود التي يتم تحميلها في الذاكرة. يتم تحميل الكود الخاص بمعالجة الإجراء الحالي فقط. يعني تضمين هذا الكود أن متغيرات وحدة التحكم قد تتعارض مع تلك الموجودة في البرنامج النصي للإجراء. سنرى أنه يمكننا قصر متغيرات وحدة التحكم على عدد قليل منها محددة جيدًا، والتي يجب تجنبها بعد ذلك في البرامج النصية.</p>
+<p>يمكن للمتحكم أن يبدأ بقراءة قيمة هذا المعامل ثم يفوض معالجة الطلب إلى وحدة مسؤولة عن معالجة هذا النوع من الطلبات. لقد وضعنا أنفسنا هنا في حالة حيث يتم التحكم في كل شيء بواسطة نص برمجي واحد يسمى <strong><bdi dir="ltr" class="odt-ltr-term">main.php</bdi></strong>. إذا كان على التطبيق معالجة الإجراءات <strong><bdi dir="ltr" class="odt-ltr-term">action1</bdi></strong>، <strong><bdi dir="ltr" class="odt-ltr-term">action2</bdi></strong>، ...، <strong><bdi dir="ltr" class="odt-ltr-term">actionx</bdi>،</strong> يمكن إنشاء وظيفة لكل إجراء داخل وحدة التحكم. إذا كان هناك العديد من الإجراءات، فقد ينتهي بنا الأمر بوحدة تحكم &quot;ديناصورية&quot;. يمكن أيضًا إنشاء نصوص برمجية <bdi dir="ltr" class="odt-ltr-term">action1.php</bdi>، <bdi dir="ltr" class="odt-ltr-term">action2.php</bdi>، ...،<strong><bdi dir="ltr" class="odt-ltr-term">actionx.php</bdi></strong> مكلفة بمعالجة كل إجراء. وسيكتفي وحدة التحكم التي يتعين عليها معالجة الإجراء <strong><bdi dir="ltr" class="odt-ltr-term">actionx</bdi></strong> بتحميل كود البرنامج النصي المقابل بواسطة تعليمة من نوع <strong><bdi dir="ltr" class="odt-ltr-term">include</bdi> &quot;<bdi dir="ltr" class="odt-ltr-term">actionx.php</bdi>&quot;</strong>. وتتمثل ميزة هذه الطريقة في العمل خارج كود وحدة التحكم. وبذلك يمكن لكل فرد من فريق التطوير العمل على البرنامج النصي لمعالجة الإجراء <strong><bdi dir="ltr" class="odt-ltr-term">actionx</bdi></strong> بشكل مستقل نسبيًا. كما أن تضمين كود البرنامج النصي <strong><bdi dir="ltr" class="odt-ltr-term">actionx.php</bdi></strong> في كود وحدة التحكم عند التنفيذ له ميزة أخرى تتمثل في تخفيف حجم الكود المحمّل في الذاكرة. يتم تحميل كود معالجة الإجراء الجاري فقط. يؤدي تضمين الكود هذا إلى احتمال تضارب متغيرات وحدة التحكم مع متغيرات البرنامج النصي للإجراء. سنرى أنه يمكننا العمل على قصر متغيرات وحدة التحكم على عدد قليل من المتغيرات المحددة جيدًا، والتي يجب تجنب استخدامها في البرامج النصية.</p>
 <ul>
-  <li>سنسعى بشكل منهجي إلى عزل منطق الأعمال أو الكود الخاص بالوصول إلى البيانات الدائمة في وحدات منفصلة. تعمل وحدة التحكم كقائد فريق يتلقى الطلبات من عملائه (عملاء الويب) ويقوم بتنفيذها بواسطة الكيانات الأكثر ملاءمة (وحدات الأعمال). عند كتابة وحدة التحكم، سنحدد واجهة وحدات الأعمال التي سيتم كتابتها. ينطبق هذا إذا كانت هناك حاجة إلى إنشاء وحدات الأعمال هذه. إذا كانت موجودة بالفعل، فستتكيف وحدة التحكم مع واجهة هذه الوحدات الموجودة.
+  <li>سنحاول بشكل منهجي عزل كود الأعمال أو كود الوصول إلى البيانات الدائمة في وحدات منفصلة. وحدة التحكم هي بمثابة قائد فريق يتلقى الطلبات من عملائه (عملاء الويب) ويقوم بتنفيذها من خلال الأشخاص الأكثر ملاءمة (وحدات الأعمال). عند كتابة وحدة التحكم، سنحدد واجهة الوحدات النمطية الخاصة بالمهام التي يجب كتابتها. هذا إذا كان يتعين إنشاء هذه الوحدات النمطية. إذا كانت موجودة بالفعل، فستتكيف وحدة التحكم مع واجهة هذه الوحدات النمطية الموجودة.
   </li>
 </ul>
 
-<ol>
-  <li>سنكتب الهيكل الأساسي للوحدات النمطية للأعمال التي تتطلبها وحدة التحكم. على سبيل المثال، إذا كانت وحدة التحكم تستخدم وحدة نمطية<b> `<bdi dir="ltr" class="odt-ltr-term">getCodes</bdi>` </b>التي تُرجع مصفوفة من السلاسل، فيمكننا في البداية كتابة ما يلي ببساطة:
+<ol start="4">
+  <li>سنكتب الهيكل الأساسي للوحدات النمطية الخاصة بالمجال المطلوبة للمتحكم. على سبيل المثال، إذا كان المتحكم يستخدم وحدة نمطية <b><bdi dir="ltr" class="odt-ltr-term">getCodes</bdi> </b>تعرض جدولًا من سلاسل الأحرف، فيمكننا الاكتفاء في البداية بكتابة:
   </li>
 </ol>
 
@@ -623,19 +623,19 @@
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
 </code></pre></div>
 <ol start="10">
-  <li>يمكننا بعد ذلك الانتقال إلى اختبار وحدة التحكم ونصوص <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> المرتبطة بها:
+  <li>يمكننا بعد ذلك الانتقال إلى اختبارات وحدة التحكم ونصوص <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> المرتبطة بها:
   </li>
 </ol>
 
 <ul>
-  <li>يتم وضع وحدة التحكم ونصوص الإجراءات والنماذج وطرق العرض والموارد التي يتطلبها التطبيق (الصور، إلخ) في مجلد <b><bdi dir="ltr" class="odt-ltr-term">DC</bdi> </b>المرتبط بسياق <b><bdi dir="ltr" class="odt-ltr-term">C</bdi></b> الخاص بالتطبيق. 
+  <li>يتم وضع وحدة التحكم، ونصوص الإجراءات، والنماذج، وطرق العرض، والموارد اللازمة للتطبيق (الصور،...) في المجلد <b><bdi dir="ltr" class="odt-ltr-term">DC</bdi> </b>المرتبط بسياق <b><bdi dir="ltr" class="odt-ltr-term">C</bdi> </b>للتطبيق. 
   </li>
-  <li>بمجرد الانتهاء من ذلك، يتم اختبار التطبيق وتصحيح الأخطاء الأولية. إذا كان<b> <bdi dir="ltr" class="odt-ltr-term">main.php</bdi> </b>هو وحدة التحكم و <b><bdi dir="ltr" class="odt-ltr-term">C</bdi> </b>هو سياق التطبيق، فسنطلب عنوان <bdi dir="ltr" class="odt-ltr-term">URL</bdi><b> <bdi dir="ltr" class="odt-ltr-term">http://localhost/C/main.php</bdi></b>. في نهاية هذه المرحلة، تصبح بنية التطبيق جاهزة للعمل. قد تكون مرحلة الاختبار هذه صعبة، نظرًا لوجود عدد قليل من أدوات تصحيح الأخطاء المتاحة إذا كنت لا تستخدم بيئات تطوير متقدمة، والتي عادةً ما تكون مدفوعة. يمكنك استخدام عبارات<b> <bdi dir="ltr" class="odt-ltr-term">echo</bdi> &quot;<bdi dir="ltr" class="odt-ltr-term">message</bdi>&quot;</b>، التي تكتب إلى دفق <bdi dir="ltr" class="odt-ltr-term">HTML</bdi> المرسل إلى العميل وبالتالي تظهر على صفحة الويب التي يعرضها المتصفح.
+  <li>وبعد ذلك، يتم اختبار التطبيق وتصحيح الأخطاء الأولى. إذا كان <b><bdi dir="ltr" class="odt-ltr-term">main.php</bdi> </b>هو وحدة التحكم و <b><bdi dir="ltr" class="odt-ltr-term">C</bdi> </b>هو سياق التطبيق، فسيتم طلب <bdi dir="ltr" class="odt-ltr-term">URL</bdi><b> <bdi dir="ltr" class="odt-ltr-term">http://localhost/C/main.php</bdi></b>. في نهاية هذه المرحلة، تصبح بنية التطبيق جاهزة للعمل. قد تكون مرحلة الاختبار هذه صعبة نظرًا لقلة أدوات تصحيح الأخطاء المتاحة إذا لم يتم استخدام بيئات تطوير متطورة والتي عادةً ما تكون مدفوعة. يمكن الاستعانة بتعليمات <b><bdi dir="ltr" class="odt-ltr-term">echo</bdi> &quot;<bdi dir="ltr" class="odt-ltr-term">message</bdi>&quot; </b>التي تكتب في التدفق <bdi dir="ltr" class="odt-ltr-term">HTML</bdi> المرسل إلى العميل، وبالتالي تظهر في صفحة الويب المعروضة بواسطة المتصفح.
   </li>
 </ul>
 
 <ol>
-  <li>أخيرًا، نكتب فئات الأعمال التي يتطلبها وحدة التحكم. يتضمن هذا عادةً التطوير القياسي لفئة <bdi dir="ltr" class="odt-ltr-term">PHP</bdi>، والتي عادةً ما تكون مستقلة عن أي تطبيق ويب. سيتم اختبارها أولاً خارج هذه البيئة، باستخدام تطبيق وحدة التحكم، على سبيل المثال. بمجرد كتابة فئة الأعمال، نقوم بدمجها في بنية نشر تطبيق الويب واختبار تكاملها بشكل صحيح. نواصل بهذه الطريقة لكل فئة أعمال.
+  <li>وأخيرًا، نكتب فئات الأعمال التي يحتاجها وحدة التحكم. وعادةً ما يكون لدينا هنا التطوير الكلاسيكي لفئة <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> التي تكون في أغلب الأحيان مستقلة عن أي تطبيق ويب. وسيتم اختبارها أولاً خارج هذه البيئة، باستخدام تطبيق وحدة التحكم على سبيل المثال. عند كتابة فئة مهنية، يتم دمجها في بنية نشر تطبيق الويب واختبار دمجها بشكل صحيح. يتم اتباع هذه الخطوات لكل فئة مهنية.
   </li>
 </ol>
 

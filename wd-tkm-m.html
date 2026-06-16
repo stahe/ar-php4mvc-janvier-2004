@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://stahe.github.io/ar-php4mvc-janvier-2004/wd-tkm-m.html">
       
       
-        <link rel="prev" href="nhj-twyr-mvc-llwybphp.html">
+        <link rel="prev" href="nhj-twyr-mvc-fy-lwybphp.html">
       
       
         <link rel="next" href="tbyq-twyy.html">
@@ -332,14 +332,14 @@
   
   
     <li class="md-nav__item">
-      <a href="nhj-twyr-mvc-llwybphp.html" class="md-nav__link">
+      <a href="nhj-twyr-mvc-fy-lwybphp.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. نهج تطوير MVC للويب/PHP
+    2. نهج تطوير MVC في الويب/PHP
   
 
     
@@ -444,7 +444,7 @@
   <a href="#33" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3. المكتبات المراد تضمينها في وحدة التحكم
+        3.3. المكتبات التي يجب تضمينها في وحدة التحكم
       
     </span>
   </a>
@@ -455,7 +455,7 @@
   <a href="#34" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4. إدارة الجلسة
+        3.4. إدارة الجلسات
       
     </span>
   </a>
@@ -466,7 +466,7 @@
   <a href="#35" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5. إرسال الاستجابة إلى العميل
+        3.5. إرسال الرد إلى العميل
       
     </span>
   </a>
@@ -499,7 +499,7 @@
   <a href="#38" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.8. تصحيح الأخطاء
+        3.8. التصحيح
       
     </span>
   </a>
@@ -569,49 +569,49 @@
 
 
 
-<p><a id="refheading29950107341754"></a></p>
+<p><span id="refheading29950107341754" name="refheading29950107341754" class="odt-bookmark-anchor"></span></p>
 <h1 id="3">3. <span style="color: #365f91">وحدة تحكم عامة</span></h1>
-<p><a id="refheading29952107341754"></a></p>
+<p><span id="refheading29952107341754" name="refheading29952107341754" class="odt-bookmark-anchor"></span></p>
 <h2 id="31">3.1. <span style="color: #4f81bd">مقدمة</span></h2>
-<p>في الطريقة السابقة، كان من المفهوم أننا كان علينا كتابة وحدة التحكم المسماة <strong><bdi dir="ltr" class="odt-ltr-term">main.php</bdi></strong>. مع القليل من الخبرة، ندرك أن وحدة التحكم هذه غالبًا ما تقوم بنفس المهام، ولذلك من المغري كتابة وحدة تحكم عامة يمكن استخدامها في معظم تطبيقات الويب. قد يكون كود وحدة التحكم هذه كما يلي:</p>
+<p>في الطريقة السابقة، كان من المفهوم أننا كنا سنكتب وحدة التحكم المسماة <strong><bdi dir="ltr" class="odt-ltr-term">main.php</bdi></strong>. مع قليل من الخبرة، ندرك أن وحدة التحكم هذه غالبًا ما تقوم بنفس المهام، ومن ثم يكون من المغري كتابة وحدة تحكم عامة يمكن استخدامها في معظم تطبيقات الويب. قد يكون كود وحدة التحكم هذه كما يلي:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>     <span class="c1">// generic controller</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>     <span class="c1">// وحدة تحكم عامة</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   <span class="c1">// configurable reading</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  <span class="c1">// قراءة التكوين</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  <span class="k">include</span> <span class="s1">&#39;config.php&#39;</span><span class="p">;</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   <span class="c1">// including libraries</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  <span class="c1">// تضمين المكتبات</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;includes&#39;</span><span class="p">]);</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>      <span class="k">include</span><span class="p">(</span><span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;includes&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">]);</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  <span class="p">}</span><span class="c1">//for  </span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>   <span class="c1">// start or resume session</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  <span class="c1">// بدء أو استئناف الجلسة</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>  <span class="nb">session_start</span><span class="p">();</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>  <span class="nv">$dSession</span><span class="o">=</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">&quot;session&quot;</span><span class="p">];</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>  <span class="k">if</span><span class="p">(</span><span class="nv">$dSession</span><span class="p">)</span> <span class="nv">$dSession</span><span class="o">=</span><span class="nb">unserialize</span><span class="p">(</span><span class="nv">$dSession</span><span class="p">);</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>   <span class="c1">// retrieve the action to be taken</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>  <span class="c1">// استرداد الإجراء المطلوب</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>  <span class="nv">$sAction</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">]</span> <span class="o">?</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">])</span> <span class="o">:</span> <span class="s1">&#39;init&#39;</span><span class="p">;</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>  <span class="nv">$sAction</span><span class="o">=</span><span class="nb">strtolower</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">])</span><span class="o">.</span><span class="s2">&quot;:</span><span class="si">$sAction</span><span class="s2">&quot;</span><span class="p">;</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>     <span class="c1">// is the sequence of actions normal?</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>     <span class="c1">// هل تسلسل الإجراءات طبيعي؟</span>
 <a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>  <span class="k">if</span><span class="p">(</span> <span class="o">!</span> <span class="nx">enchainementOK</span><span class="p">(</span><span class="nv">$dConfig</span><span class="p">,</span><span class="nv">$dSession</span><span class="p">,</span><span class="nv">$sAction</span><span class="p">)){</span>  
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>     <span class="c1">// abnormal sequence</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="c1">// تسلسل غير طبيعي</span>
 <a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="nv">$sAction</span><span class="o">=</span><span class="s1">&#39;enchainementinvalide&#39;</span><span class="p">;</span>
 <a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>  <span class="p">}</span><span class="c1">//if</span>
 <a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>     <span class="c1">// share processing</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>     <span class="c1">// معالجة الإجراء</span>
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>  <span class="nv">$scriptAction</span><span class="o">=</span><span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="nv">$sAction</span><span class="p">]</span> <span class="o">?</span> 
 <a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="nv">$sAction</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="o">:</span> 
 <a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="s1">&#39;actionInvalide&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">];</span>
 <a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>  <span class="k">include</span> <span class="nv">$scriptAction</span><span class="p">;</span>
 <a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>   <span class="c1">// send response(view) to customer</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>  <span class="c1">// إرسال الرد (العرض) إلى العميل</span>
 <a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>  <span class="nv">$sEtat</span><span class="o">=</span><span class="nv">$dSession</span><span class="p">[</span><span class="s1">&#39;etat&#39;</span><span class="p">][</span><span class="s1">&#39;principal&#39;</span><span class="p">];</span>
 <a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>  <span class="nv">$scriptVue</span><span class="o">=</span><span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;etats&#39;</span><span class="p">][</span><span class="nv">$sEtat</span><span class="p">][</span><span class="s1">&#39;vue&#39;</span><span class="p">];</span>
 <a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>  <span class="k">include</span> <span class="nv">$scriptVue</span><span class="p">;</span>
 <a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>   <span class="c1">// end of script - we shouldn&#39;t get there unless there&#39;s a bug</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>  <span class="c1">// نهاية البرنامج النصي - لا ينبغي الوصول إلى هذه المرحلة إلا في حالة وجود خطأ</span>
 <a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>  <span class="nx">trace</span> <span class="p">(</span><span class="s2">&quot;Erreur de configuration.&quot;</span><span class="p">);</span>
 <a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>  <span class="nx">trace</span><span class="p">(</span><span class="s2">&quot;Action=[</span><span class="si">$sAction</span><span class="s2">]&quot;</span><span class="p">);</span>
 <a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>  <span class="nx">trace</span><span class="p">(</span><span class="s2">&quot;scriptAction=[</span><span class="si">$scriptAction</span><span class="s2">]&quot;</span><span class="p">);</span>
@@ -622,36 +622,36 @@
 <a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>
 <a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>  <span class="c1">// ---------------------------------------------------------------</span>
 <a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>  <span class="k">function</span> <span class="nf">finSession</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$dConfig</span><span class="p">,</span><span class="o">&amp;</span><span class="nv">$dReponse</span><span class="p">,</span><span class="o">&amp;</span><span class="nv">$dSession</span><span class="p">){</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>     <span class="c1">// $dConfig: configuration dictionary</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>       <span class="c1">// $dSession: dictionary containing session info</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>         <span class="c1">// $dReponse: the dictionary of arguments for the response page</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="c1">// $dConfig: قاموس التكوين</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>      <span class="c1">// $dSession: قاموس يحتوي على معلومات الجلسة</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>         <span class="c1">// $dReponse: قاموس معلمات صفحة الاستجابة</span>
 <a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>     <span class="c1">// session registration</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>    <span class="c1">// تسجيل الجلسة</span>
 <a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$dSession</span><span class="p">)){</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>      <span class="c1">// put the query parameters in the session</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>      <span class="c1">// يتم وضع معلمات الاستعلام في الجلسة</span>
 <a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>      <span class="nv">$dSession</span><span class="p">[</span><span class="s1">&#39;requete&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">strtolower</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">])</span><span class="o">==</span><span class="s1">&#39;get&#39;</span> <span class="o">?</span> <span class="nv">$_GET</span> <span class="o">:</span>
 <a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>          <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">])</span><span class="o">==</span><span class="s1">&#39;post&#39;</span> <span class="o">?</span> <span class="nv">$_POST</span> <span class="o">:</span> <span class="k">array</span><span class="p">();</span>
 <a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;session&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">serialize</span><span class="p">(</span><span class="nv">$dSession</span><span class="p">);</span>
 <a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>      <span class="nb">session_write_close</span><span class="p">();</span>
 <a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>    <span class="p">}</span><span class="k">else</span><span class="p">{</span>    
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>         <span class="c1">// no session</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>        <span class="c1">// لا توجد جلسة</span>
 <a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>      <span class="nb">session_destroy</span><span class="p">();</span>
 <a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>    <span class="p">}</span>
 <a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>         <span class="c1">// we present the answer</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>         <span class="c1">// يتم عرض الرد</span>
 <a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>        <span class="k">include</span> <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;vuesReponse&#39;</span><span class="p">][</span><span class="nv">$dReponse</span><span class="p">[</span><span class="s1">&#39;vuereponse&#39;</span><span class="p">]][</span><span class="s1">&#39;url&#39;</span><span class="p">];</span>
 <a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>     <span class="c1">// end of script</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>    <span class="c1">// نهاية البرنامج النصي</span>
 <a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>    <span class="k">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>  <span class="p">}</span><span class="c1">//endsession      </span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>  <span class="p">}</span><span class="c1">//نهاية الجلسة      </span>
 <a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>
 <a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>  <span class="c1">//--------------------------------------------------------------------</span>
 <a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>    <span class="k">function</span> <span class="nf">enchainementOK</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$dConfig</span><span class="p">,</span><span class="o">&amp;</span><span class="nv">$dSession</span><span class="p">,</span><span class="nv">$sAction</span><span class="p">){</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>       <span class="c1">// checks whether the current action is authorized with respect to the previous state</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>      <span class="c1">// التحقق مما إذا كان الإجراء الحالي مسموحًا به بالنسبة للحالة السابقة</span>
 <a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>    <span class="nv">$etat</span><span class="o">=</span><span class="nv">$dSession</span><span class="p">[</span><span class="s1">&#39;etat&#39;</span><span class="p">][</span><span class="s1">&#39;principal&#39;</span><span class="p">];</span>
 <a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>    <span class="k">if</span><span class="p">(</span><span class="o">!</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$etat</span><span class="p">))</span> <span class="nv">$etat</span><span class="o">=</span><span class="s1">&#39;sansetat&#39;</span><span class="p">;</span>
 <a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>     <span class="c1">// check action</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>    <span class="c1">// التحقق من الإجراء</span>
 <a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>    <span class="nv">$actionsautorisees</span><span class="o">=</span><span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;etats&#39;</span><span class="p">][</span><span class="nv">$etat</span><span class="p">][</span><span class="s1">&#39;actionsautorisees&#39;</span><span class="p">];</span>
 <a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>    <span class="nv">$autorise</span><span class="o">=</span> <span class="o">!</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$actionsautorisees</span><span class="p">)</span> <span class="o">||</span> <span class="nb">in_array</span><span class="p">(</span><span class="nv">$sAction</span><span class="p">,</span><span class="nv">$actionsautorisees</span><span class="p">);</span>
 <a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>        <span class="k">return</span> <span class="nv">$autorise</span><span class="p">;</span>    
@@ -659,101 +659,101 @@
 <a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>
 <a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>  <span class="c1">//--------------------------------------------------------------------</span>
 <a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>  <span class="k">function</span> <span class="nf">dump</span><span class="p">(</span><span class="nv">$dInfos</span><span class="p">){</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>       <span class="c1">// displays an information dictionary</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>      <span class="c1">// عرض قاموس المعلومات</span>
 <a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>    <span class="k">while</span><span class="p">(</span><span class="k">list</span><span class="p">(</span><span class="nv">$clé</span><span class="p">,</span><span class="nv">$valeur</span><span class="p">)</span><span class="o">=</span><span class="nb">each</span><span class="p">(</span><span class="nv">$dInfos</span><span class="p">)){</span>
 <a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>        <span class="k">echo</span> <span class="s2">&quot;[</span><span class="si">$clé</span><span class="s2">,</span><span class="si">$valeur</span><span class="s2">]&lt;br&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>    <span class="p">}</span><span class="c1">//while</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>  <span class="p">}</span><span class="c1">//follow-up</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>  <span class="p">}</span><span class="c1">//المتابعة</span>
 <a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>
 <a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>  <span class="c1">//--------------------------------------------------------------------</span>
 <a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>  <span class="k">function</span> <span class="nf">trace</span><span class="p">(</span><span class="nv">$msg</span><span class="p">){</span>
 <a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>      <span class="k">echo</span> <span class="nv">$msg</span><span class="o">.</span><span class="s2">&quot;&lt;br&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>  <span class="p">}</span><span class="c1">//follow-up</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>  <span class="p">}</span><span class="c1">//متابعة</span>
 <a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>
 <a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="cp">?&gt;</span>
 </code></pre></div>
-<p><a id="refheading29954107341754"></a></p>
+<p><span id="refheading29954107341754" name="refheading29954107341754" class="odt-bookmark-anchor"></span></p>
 <h2 id="32">3.2. <span style="color: #4f81bd">ملف تكوين التطبيق</span></h2>
-<p>يتم تكوين التطبيق في نص برمجي يجب أن يُسمى <strong><bdi dir="ltr" class="odt-ltr-term">config.php</bdi></strong>. يتم تخزين إعدادات التطبيق في قاموس يُسمى $<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>، والذي يستخدمه وحدة التحكم ونصوص الإجراءات والنماذج وطرق العرض الأساسية.</p>
-<p><a id="refheading29956107341754"></a></p>
-<h2 id="33">3.3. <span style="color: #4f81bd">المكتبات المراد تضمينها في وحدة التحكم</span></h2>
-<p>توضع المكتبات المراد تضمينها في كود وحدة التحكم في المصفوفة <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">includes</bdi>&#x27;]</strong>. تقوم وحدة التحكم بتضمينها باستخدام المقتطف البرمجي التالي:</p>
+<p>يتم تكوين التطبيق في برنامج نصي يحمل بالضرورة الاسم <strong><bdi dir="ltr" class="odt-ltr-term">config.php</bdi></strong>. يتم وضع معلمات التطبيق في قاموس يسمى $<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi> يستخدمه كل من وحدة التحكم وبرامج الإجراءات النصية والقوالب والعروض الأولية.</p>
+<p><span id="refheading29956107341754" name="refheading29956107341754" class="odt-bookmark-anchor"></span></p>
+<h2 id="33">3.3. <span style="color: #4f81bd">المكتبات التي يجب تضمينها في وحدة التحكم</span></h2>
+<p>يتم وضع المكتبات التي يجب تضمينها في كود وحدة التحكم في الجدول <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">includes</bdi>&#x27;]</strong>. تقوم وحدة التحكم بتضمينها باستخدام تسلسل الكود التالي:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">...</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>   <span class="c1">// configurable reading</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="c1">// قراءة التكوين</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  <span class="k">include</span> <span class="s2">&quot;config.php&quot;</span><span class="p">;</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>   <span class="c1">// including libraries</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  <span class="c1">// تضمين المكتبات</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;includes&#39;</span><span class="p">]);</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>      <span class="k">include</span><span class="p">(</span><span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;includes&#39;</span><span class="p">][</span><span class="nv">$i</span><span class="p">]);</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  <span class="p">}</span><span class="c1">//for  </span>
 </code></pre></div>
-<p><a id="refheading29958107341754"></a></p>
-<h2 id="34">3.4. <span style="color: #4f81bd">إدارة الجلسة</span></h2>
-<p>تقوم وحدة التحكم العامة بإدارة الجلسة تلقائيًا. فهي تحفظ محتوى الجلسة وتسترده عبر قاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi></strong>. قد يحتوي هذا القاموس على كائنات يجب تسلسلها حتى يمكن استردادها بشكل صحيح لاحقًا. المفتاح المرتبط بهذا القاموس هو <strong>&#x27;<bdi dir="ltr" class="odt-ltr-term">session</bdi></strong>&#x27;. لذلك، يتم استرداد الجلسة باستخدام الكود التالي:</p>
+<p><span id="refheading29958107341754" name="refheading29958107341754" class="odt-bookmark-anchor"></span></p>
+<h2 id="34">3.4. <span style="color: #4f81bd">إدارة الجلسات</span></h2>
+<p>يقوم وحدة التحكم العامة بإدارة الجلسة تلقائيًا. وهي تقوم بحفظ واسترداد محتوى الجلسة عبر القاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi></strong>. قد يحتوي هذا القاموس على كائنات يجب تسلسلها حتى يمكن استردادها بشكل صحيح لاحقًا. المفتاح المرتبط بهذا القاموس هو <strong>&#x27;<bdi dir="ltr" class="odt-ltr-term">session</bdi></strong>&#x27;. كما يتم استرداد الجلسة باستخدام الكود التالي:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nx">…</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>   <span class="c1">// start or resume session</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  <span class="c1">// بدء أو استئناف الجلسة</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  <span class="nb">session_start</span><span class="p">();</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  <span class="nv">$dSession</span><span class="o">=</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">&quot;session&quot;</span><span class="p">];</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  <span class="k">if</span><span class="p">(</span><span class="nv">$dSession</span><span class="p">)</span> <span class="nv">$dSession</span><span class="o">=</span><span class="nb">unserialize</span><span class="p">(</span><span class="nv">$dSession</span><span class="p">);</span>
 </code></pre></div>
-<p>إذا احتاجت إحدى الإجراءات إلى تخزين معلومات في الجلسة، فستضيف مفاتيح وقيم إلى قاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi></strong>. ونظرًا لأن جميع الإجراءات تشترك في نفس الجلسة، فهناك خطر حدوث تعارضات في مفاتيح الجلسة إذا تم تطوير التطبيق بشكل مستقل من قبل عدة أشخاص. وهذا يمثل تحديًا. نحتاج إلى تطوير مستودع يسرد مفاتيح الجلسة، وهو مستودع مشترك بين الجميع. وسنرى أن كل إجراء ينتهي باستدعاء الدالة <strong><bdi dir="ltr" class="odt-ltr-term">finSession</bdi></strong> التالية:</p>
+<p>إذا أرادت إحدى الإجراءات حفظ معلومات في الجلسة، فستضيف مفاتيح وقيمًا إلى القاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi></strong>. ونظرًا لأن جميع الإجراءات تشترك في نفس الجلسة، فهناك خطر حدوث تعارض في مفاتيح الجلسة إذا تم تطوير التطبيق بشكل مستقل من قبل عدة أشخاص. وهذه مشكلة. يجب تطوير مرجع يسرد مفاتيح الجلسة، وهو مرجع مشترك بين الجميع. سنرى أن كل إجراء ينتهي باستدعاء الدالة التالية <strong><bdi dir="ltr" class="odt-ltr-term">finSession</bdi></strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">...</span> 
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> <span class="c1">// ---------------------------------------------------------------</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  <span class="k">function</span> <span class="nf">finSession</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$dConfig</span><span class="p">,</span><span class="o">&amp;</span><span class="nv">$dReponse</span><span class="p">,</span><span class="o">&amp;</span><span class="nv">$dSession</span><span class="p">){</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>     <span class="c1">// $dConfig: configuration dictionary</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>       <span class="c1">// $dSession: dictionary containing session information</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>         <span class="c1">// $dReponse: the dictionary of arguments for the response page</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="c1">// $dConfig: قاموس التكوين</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>      <span class="c1">// $dSession: قاموس يحتوي على معلومات الجلسة</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>         <span class="c1">// $dReponse: قاموس معلمات صفحة الاستجابة</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>     <span class="c1">// session registration</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="c1">// تسجيل الجلسة</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$dSession</span><span class="p">)){</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>      <span class="c1">// put the query parameters in the session</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>      <span class="c1">// يتم وضع معلمات الطلب في الجلسة</span>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>      <span class="nv">$dSession</span><span class="p">[</span><span class="s1">&#39;requete&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">strtolower</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">])</span><span class="o">==</span><span class="s1">&#39;get&#39;</span> <span class="o">?</span> <span class="nv">$_GET</span> <span class="o">:</span>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>          <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">])</span><span class="o">==</span><span class="s1">&#39;post&#39;</span> <span class="o">?</span> <span class="nv">$_POST</span> <span class="o">:</span> <span class="k">array</span><span class="p">();</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;session&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">serialize</span><span class="p">(</span><span class="nv">$dSession</span><span class="p">);</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>      <span class="nb">session_write_close</span><span class="p">();</span>
 <a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="p">}</span><span class="k">else</span><span class="p">{</span>    
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>         <span class="c1">// no session</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        <span class="c1">// لا توجد جلسة</span>
 <a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>      <span class="nb">session_destroy</span><span class="p">();</span>
 <a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="p">}</span>
 <a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>         <span class="c1">// we present the answer</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>         <span class="c1">// عرض الرد</span>
 <a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>        <span class="k">include</span> <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;vuesReponse&#39;</span><span class="p">][</span><span class="nv">$dReponse</span><span class="p">[</span><span class="s1">&#39;vuereponse&#39;</span><span class="p">]][</span><span class="s1">&#39;url&#39;</span><span class="p">];</span>
 <a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>     <span class="c1">// end of script</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    <span class="c1">// نهاية البرنامج النصي</span>
 <a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    <span class="k">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>  <span class="p">}</span><span class="c1">//endsession      </span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>  <span class="p">}</span><span class="c1">//إنهاء الجلسة      </span>
 </code></pre></div>
-<p>قد تقرر إحدى الإجراءات عدم متابعة الجلسة. للقيام بذلك، ما عليها سوى عدم تمرير أي قيمة إلى المعلمة <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi></strong> الخاصة بوظيفة <bdi dir="ltr" class="odt-ltr-term">endSession</bdi>، وفي هذه الحالة يتم إتلاف الجلسة (<bdi dir="ltr" class="odt-ltr-term">session</bdi>_destroy). إذا كان قاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi></strong> موجودًا، يتم حفظه في الجلسة، ثم يتم كتابته (<bdi dir="ltr" class="odt-ltr-term">session</bdi>_write_close). وبالتالي، يمكن للإجراء الحالي تخزين العناصر في الجلسة عن طريق إضافة عناصر إلى قاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi></strong>. لاحظ أن وحدة التحكم تخزن تلقائيًا معلمات الطلب الحالي في الجلسة. وهذا يسمح باستردادها إذا لزم الأمر لمعالجة الطلب التالي.</p>
-<p><a id="refheading29960107341754"></a></p>
-<h2 id="35">3.5. <span style="color: #4f81bd">إرسال الاستجابة إلى العميل</span></h2>
-<p>الغرض النهائي من وظيفة <strong><bdi dir="ltr" class="odt-ltr-term">finSession</bdi></strong> هو إرسال استجابة إلى المستخدم. ذكرنا أن الاستجابة يمكن أن تحتوي على قوالب صفحات مختلفة. يتم تكوين هذه القوالب في <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">vuesReponse</bdi>&#x27;]</strong>. في تطبيق ذي قالبين، قد يكون لدينا:</p>
+<p>يمكن أن تقرر إحدى الإجراءات عدم متابعة الجلسة. ويكفي لذلك عدم تمرير أي قيمة إلى المعلمة <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi></strong> للدالة <bdi dir="ltr" class="odt-ltr-term">finSession</bdi>، وفي هذه الحالة يتم حذف الجلسة (<bdi dir="ltr" class="odt-ltr-term">session</bdi>_destroy). إذا كان القاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi></strong> موجودًا، يتم حفظه في الجلسة ثم يتم تسجيل الجلسة (<bdi dir="ltr" class="odt-ltr-term">session</bdi>_write_close). وبالتالي، يمكن للإجراء الحالي تخزين العناصر في الجلسة عن طريق إضافة عناصر إلى القاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi></strong>. تجدر الإشارة إلى أن وحدة التحكم تقوم تلقائيًا بتخزين معلمات الطلب الحالي في الجلسة. وهذا سيسمح باستعادتها عند الحاجة لمعالجة الطلب التالي.</p>
+<p><span id="refheading29960107341754" name="refheading29960107341754" class="odt-bookmark-anchor"></span></p>
+<h2 id="35">3.5. <span style="color: #4f81bd">إرسال الرد إلى العميل</span></h2>
+<p>الهدف النهائي للوظيفة <strong><bdi dir="ltr" class="odt-ltr-term">finSession</bdi></strong> هو إرسال استجابة إلى المستخدم. لقد ذكرنا أن الرد يمكن أن يكون له نماذج صفحات مختلفة. يتم وضع هذه النماذج حسب التكوين في <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">vuesReponse</bdi>&#x27;]</strong>. في تطبيق ذي نموذجين، يمكن أن يكون لدينا:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nx">…</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;vuesReponse&#39;</span><span class="p">][</span><span class="s1">&#39;modele1&#39;</span><span class="p">]</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;m-modele1.php&#39;</span><span class="p">);</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;vuesReponse&#39;</span><span class="p">][</span><span class="s1">&#39;modele2&#39;</span><span class="p">]</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;m-modele2.php&#39;</span><span class="p">);</span>
 </code></pre></div>
-<p>يحدد الإجراء الحالي القالب المطلوب في <strong>$<bdi dir="ltr" class="odt-ltr-term">dResponse</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">responseView</bdi>&#x27;]</strong>. يعرض وحدة التحكم هذا باستخدام التعليمات التالية:</p>
+<p>تحدد العملية الجارية في <strong>$<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">vuereponse</bdi>&#x27;]</strong> النموذج المطلوب. ويتم عرض هذا النموذج بواسطة وحدة التحكم من خلال التعليمات التالية:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">…</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>         <span class="c1">// we present the answer</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>         <span class="c1">// يتم عرض الرد</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        <span class="k">include</span> <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;vuesReponse&#39;</span><span class="p">][</span><span class="nv">$dReponse</span><span class="p">[</span><span class="s1">&#39;vuereponse&#39;</span><span class="p">]][</span><span class="s1">&#39;url&#39;</span><span class="p">];</span>
 </code></pre></div>
 <p>بمجرد إرسال هذا الرد إلى العميل، يتوقف وحدة التحكم (<bdi dir="ltr" class="odt-ltr-term">exit</bdi>).</p>
-<p><a id="refheading29962107341754"></a></p>
+<p><span id="refheading29962107341754" name="refheading29962107341754" class="odt-bookmark-anchor"></span></p>
 <h2 id="36">3.6. <span style="color: #4f81bd">تنفيذ الإجراءات</span></h2>
-<p>تنتظر وحدة التحكم الطلبات التي تحتوي على معلمة <strong><bdi dir="ltr" class="odt-ltr-term">action</bdi>=<bdi dir="ltr" class="odt-ltr-term">XX</bdi></strong>. إذا لم تكن هذه المعلمة موجودة في الطلب وكان الطلب من نوع <bdi dir="ltr" class="odt-ltr-term">GET</bdi>، فإن الإجراء يأخذ القيمة <strong>&#x27;<bdi dir="ltr" class="odt-ltr-term">init</bdi></strong>&#x27;. وهذا هو الحال بالنسبة للطلب الأول الذي يتم إرساله إلى وحدة التحكم، والذي يكون على الشكل <strong><bdi dir="ltr" class="odt-ltr-term">http://machine:port/chemin/main.php</bdi></strong>.</p>
+<p>ينتظر وحدة التحكم الطلبات التي تحتوي على المعلمة <strong><bdi dir="ltr" class="odt-ltr-term">action</bdi>=<bdi dir="ltr" class="odt-ltr-term">XX</bdi></strong>. إذا لم يكن هذا المعامل موجودًا في الطلب وكان الطلب هو <bdi dir="ltr" class="odt-ltr-term">GET</bdi>، فإن الإجراء يأخذ القيمة <strong>&#x27;<bdi dir="ltr" class="odt-ltr-term">init</bdi></strong>&#x27;. وهذا هو الحال بالنسبة للطلب الأول الذي يتم إرساله إلى وحدة التحكم والذي يكون بالشكل <strong><bdi dir="ltr" class="odt-ltr-term">http://machine:port/chemin/main.php</bdi></strong>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nx">…</span><span class="o">..</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>   <span class="c1">// retrieve the action to be taken</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  <span class="c1">// استرداد الإجراء المطلوب</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  <span class="nv">$sAction</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">]</span> <span class="o">?</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">])</span> <span class="o">:</span> <span class="s1">&#39;init&#39;</span><span class="p">;</span>
 </code></pre></div>
-<p>بشكل افتراضي، يرتبط كل إجراء ببرنامج نصي مسؤول عن معالجة هذا الإجراء. على سبيل المثال:</p>
+<p>بشكل افتراضي، يرتبط بكل إجراء برنامج نصي مسؤول عن معالجة هذا الإجراء. على سبيل المثال:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="o">...</span> 
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  <span class="c1">// configuration of application actions</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1">// تكوين إجراءات التطبيق</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="s1">&#39;get:init&#39;</span><span class="p">]</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;a-init.php&#39;</span><span class="p">);</span>  
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="s1">&#39;post:calculerimpot&#39;</span><span class="p">]</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;a-calculimpot.php&#39;</span><span class="p">);</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="s1">&#39;get:retourformulaire&#39;</span><span class="p">]</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;a-retourformulaire.php&#39;</span><span class="p">);</span>
@@ -763,57 +763,57 @@
 </code></pre></div>
 <p>هناك إجراءان محددان مسبقًا:</p>
 <table dir="rtl" class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>invalidSequence
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>enchainementInvalide
 </code></pre></div>
-</div></td><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><div style="margin:0 0 0.5em 0">الحالات التي لا يمكن فيها للإجراء الحالي أن يتبع الإجراء السابق</div></td></tr><tr><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>إجراء غير صالح
+</div></td><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><div style="margin:0 0 0.5em 0">في حالة عدم تمكن الإجراء الحالي من متابعة الإجراء السابق</div></td></tr><tr><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>actionInvalide
 </code></pre></div>
-</div></td><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><div style="margin:0 0 0.5em 0">الحالات التي لا يوجد فيها الإجراء المطلوب في قاموس الإجراءات</div></td></tr></table>
+</div></td><td dir="rtl" style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: right;"><div style="margin:0 0 0.5em 0">في حالة عدم وجود الإجراء المطلوب في قاموس الإجراءات</div></td></tr></table>
 
-<p>تُكتب الإجراءات الخاصة بالتطبيق بالصيغة <strong><bdi dir="ltr" class="odt-ltr-term">method:</bdi></strong><bdi dir="ltr" class="odt-ltr-term">action</bdi>، حيث <bdi dir="ltr" class="odt-ltr-term">method</bdi> هي طريقة <strong><bdi dir="ltr" class="odt-ltr-term">GET</bdi></strong> أو <strong><bdi dir="ltr" class="odt-ltr-term">POST</bdi></strong> للطلب و <strong><bdi dir="ltr" class="odt-ltr-term">action</bdi></strong> هي الإجراء المطلوب، وهنا: <em><bdi dir="ltr" class="odt-ltr-term">init</bdi>، <bdi dir="ltr" class="odt-ltr-term">calculateTax</bdi>، <bdi dir="ltr" class="odt-ltr-term">returnForm</bdi>، <bdi dir="ltr" class="odt-ltr-term">clearForm</bdi></em>. لاحظ أن الإجراء يتم استرداده، بغض النظر عما إذا كانت المعلمات مرسلة عبر طريقة <bdi dir="ltr" class="odt-ltr-term">GET</bdi> أو <bdi dir="ltr" class="odt-ltr-term">POST</bdi>، باستخدام التسلسل:</p>
+<p>يتم تدوين الإجراءات الخاصة بالتطبيق بالصيغة <strong><bdi dir="ltr" class="odt-ltr-term">method:action</bdi></strong> حيث <bdi dir="ltr" class="odt-ltr-term">method</bdi> هي طريقة <strong>get</strong> أو <strong><bdi dir="ltr" class="odt-ltr-term">post</bdi></strong> للطلب و <strong><bdi dir="ltr" class="odt-ltr-term">action</bdi></strong> هي الإجراء المطلوب، وهنا: <em><bdi dir="ltr" class="odt-ltr-term">init</bdi>، <bdi dir="ltr" class="odt-ltr-term">calculerimpot</bdi>، <bdi dir="ltr" class="odt-ltr-term">retourformulaire</bdi>، <bdi dir="ltr" class="odt-ltr-term">effacerformulaire</bdi></em>. يُلاحظ أن الإجراء يتم استرداده، بغض النظر عن طريقة إرسال المعلمات <bdi dir="ltr" class="odt-ltr-term">GET</bdi> أو <bdi dir="ltr" class="odt-ltr-term">POST</bdi>، من خلال التسلسل:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nx">…</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>   <span class="c1">// retrieve the action to be taken</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  <span class="c1">// استرداد الإجراء المطلوب</span>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  <span class="nv">$sAction</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">]</span> <span class="o">?</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">])</span> <span class="o">:</span> <span class="s1">&#39;init&#39;</span><span class="p">;</span> 
 </code></pre></div>
-<p>في الواقع، حتى إذا تم إرسال النموذج عبر <bdi dir="ltr" class="odt-ltr-term">POST</bdi>، لا يزال بإمكاننا كتابة:</p>
+<p>في الواقع، حتى إذا تم إرسال نموذج، يمكن دائمًا كتابة:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&#39;post&#39;</span> <span class="na">action</span><span class="o">=</span><span class="s">&#39;main.php?action=calculerimpot&#39;</span><span class="p">&gt;</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>..
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>سيتم إرسال عناصر النموذج (<bdi dir="ltr" class="odt-ltr-term">method</bdi>=&#x27;<bdi dir="ltr" class="odt-ltr-term">post</bdi>&#x27;). ومع ذلك، سيكون عنوان <bdi dir="ltr" class="odt-ltr-term">URL</bdi> المطلوب هو <strong><bdi dir="ltr" class="odt-ltr-term">main.php</bdi>?<bdi dir="ltr" class="odt-ltr-term">action</bdi>=<bdi dir="ltr" class="odt-ltr-term">calculerimpot</bdi></strong>. سيتم استرداد معلمات عنوان <bdi dir="ltr" class="odt-ltr-term">URL</bdi> هذا من المصفوفة $_GET، بينما سيتم استرداد عناصر النموذج الأخرى من المصفوفة <strong>$_POST</strong>.</p>
-<p>باستخدام قاموس الإجراءات، يقوم وحدة التحكم بتنفيذ الإجراء المطلوب على النحو التالي:</p>
+<p>سيتم إرسال عناصر النموذج (<bdi dir="ltr" class="odt-ltr-term">method</bdi>=&#x27;<bdi dir="ltr" class="odt-ltr-term">post</bdi>&#x27;). ومع ذلك، سيكون عنوان <bdi dir="ltr" class="odt-ltr-term">URL</bdi> المطلوب هو <strong><bdi dir="ltr" class="odt-ltr-term">main.php</bdi>?<bdi dir="ltr" class="odt-ltr-term">action</bdi>=<bdi dir="ltr" class="odt-ltr-term">calculerimpot</bdi></strong>. سيتم استرداد معلمات هذا <bdi dir="ltr" class="odt-ltr-term">URL</bdi> في القاموس <strong>$_GET</strong> بينما سيتم استرداد عناصر النموذج الأخرى في القاموس <strong>$_POST</strong>.</p>
+<p>وباستخدام قاموس الإجراءات، يقوم وحدة التحكم بتنفيذ الإجراء المطلوب على النحو التالي:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="o">...</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="c1">// share processing</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="c1">// معالجة الإجراء</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  <span class="nv">$scriptAction</span><span class="o">=</span><span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="nv">$sAction</span><span class="p">]</span> <span class="o">?</span> 
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="nv">$sAction</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="o">:</span> 
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="s1">&#39;actionInvalide&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">];</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>  <span class="k">include</span> <span class="nv">$scriptAction</span><span class="p">;</span>
 </code></pre></div>
-<p>إذا لم يكن الإجراء المطلوب موجودًا في قاموس الإجراءات، فسيتم تنفيذ البرنامج النصي المقابل للإجراء غير الصالح. بمجرد تحميل البرنامج النصي للإجراء في وحدة التحكم، يتم تشغيله. لاحظ أنه يمكنه الوصول إلى متغيرات وحدة التحكم ($<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>، $<bdi dir="ltr" class="odt-ltr-term">dSession</bdi>) بالإضافة إلى قواميس <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> فائقة العالمية ($_GET، $_POST، $_SERVER، $_ENV، $_SESSION). يحتوي البرنامج النصي على منطق التطبيق واستدعاءات لفئات الأعمال. في جميع الحالات، يجب أن </p>
+<p>إذا لم تكن الإجراء المطلوب موجودًا في قاموس الإجراءات، فسيتم تنفيذ البرنامج النصي المقابل لإجراء غير صالح. بمجرد تحميل البرنامج النصي للإجراء داخل وحدة التحكم، يتم تنفيذه. وتجدر الإشارة إلى أنه يمكنه الوصول إلى متغيرات وحدة التحكم ($<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>، $<bdi dir="ltr" class="odt-ltr-term">dSession</bdi>) وكذلك إلى القواميس الفائقة الشمولية لـ <bdi dir="ltr" class="odt-ltr-term">PHP</bdi> ($_GET، $_POST، $_SERVER، $_ENV، $_SESSION). سيحتوي البرنامج النصي على منطق التطبيق واستدعاءات لفئات الأعمال. في جميع الحالات، يجب أن </p>
 <ul>
-  <li>ملء قاموس <b>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi> </b>إذا كان هناك أي عناصر تحتاج إلى الحفظ في الجلسة الحالية
+  <li>ملء القاموس <b>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi> </b>إذا كان يجب حفظ العناصر في الجلسة الحالية
   </li>
-  <li>تحديد اسم قالب الاستجابة المراد عرضه في <b>$<bdi dir="ltr" class="odt-ltr-term">dResponse</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">vuereponse</bdi>&#x27;]</b> 
+  <li>وإشارة في <b>$<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">vuereponse</bdi>&#x27;] </b>إلى اسم نموذج الاستجابة المراد عرضه 
   </li>
-  <li>ينتهي باستدعاء `<b><bdi dir="ltr" class="odt-ltr-term">finSession</bdi>($<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>, $<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi>, $<bdi dir="ltr" class="odt-ltr-term">dSession</bdi>)</b>`. إذا كان من المقرر إتلاف الجلسة، فسينتهي الإجراء ببساطة باستدعاء `<b><bdi dir="ltr" class="odt-ltr-term">finSession</bdi>($<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>, $<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi>)`</b>.
+  <li>أن تنتهي باستدعاء <b><bdi dir="ltr" class="odt-ltr-term">finSession</bdi>($<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>, $<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi>, $<bdi dir="ltr" class="odt-ltr-term">dSession</bdi>)</b>. إذا كان يجب إغلاق الجلسة، فستنتهي العملية ببساطة باستدعاء <b><bdi dir="ltr" class="odt-ltr-term">finSession</bdi>($<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>, $<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi>)</b>.
   </li>
 </ul>
 
-<p>من أجل الاتساق، قد تضع الإجراء جميع المعلومات التي تحتاجها طرق العرض في قاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi></strong>. لكن هذا ليس مطلوبًا. فقط القيمة <strong>$<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">vuereponse</bdi>&#x27;]</strong> هي الأساسية. لاحظ أن كل نصوص إجراءات تنتهي باستدعاء دالة <bdi dir="ltr" class="odt-ltr-term">finSession</bdi>، والتي تنتهي هي نفسها بعملية <strong>خروج</strong>. لذلك، لا يوجد عودة من نصوص الإجراءات.</p>
-<p><a id="refheading29964107341754"></a></p>
+<p>من أجل الاتساق، يمكن للإجراء وضع جميع المعلومات المطلوبة للعروض في القاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi></strong>. ولكن هذا ليس إلزامياً. القيمة <strong>$<bdi dir="ltr" class="odt-ltr-term">dReponse</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">vuereponse</bdi>&#x27;]</strong> هي الوحيدة الضرورية. يُلاحظ أن كل نصوص الإجراءات تنتهي باستدعاء الدالة <strong><bdi dir="ltr" class="odt-ltr-term">finSession</bdi></strong> التي تنتهي بدورها بعملية <strong><bdi dir="ltr" class="odt-ltr-term">exit</bdi></strong>. وبالتالي، لا يمكن العودة من نص إجراء.</p>
+<p><span id="refheading29964107341754" name="refheading29964107341754" class="odt-bookmark-anchor"></span></p>
 <h2 id="37">3.7. <span style="color: #4f81bd">تسلسل الإجراءات</span></h2>
-<p>يمكن النظر إلى تطبيق الويب على أنه آلة ذات حالات محدودة. ترتبط الحالات المختلفة للتطبيق بالطرق المعروضة للمستخدم. يمكن للمستخدم الانتقال إلى طريقة أخرى عبر رابط أو زر. يكون تطبيق الويب قد غير حالته. لقد رأينا أن الإجراء يبدأ بطلب على شكل <strong><bdi dir="ltr" class="odt-ltr-term">http://machine:port/chemin/main.php</bdi>?<bdi dir="ltr" class="odt-ltr-term">action</bdi>=<bdi dir="ltr" class="odt-ltr-term">XX</bdi></strong>. يجب أن يأتي عنوان <bdi dir="ltr" class="odt-ltr-term">URL</bdi> هذا من رابط موجود في الطريقة المعروضة للمستخدم. نريد منع المستخدم من كتابة عنوان <bdi dir="ltr" class="odt-ltr-term">URL</bdi> <strong><bdi dir="ltr" class="odt-ltr-term">http://machine:port/chemin/main.php</bdi>?<bdi dir="ltr" class="odt-ltr-term">action</bdi>=<bdi dir="ltr" class="odt-ltr-term">XX</bdi></strong> مباشرةً، وبالتالي تجاوز المسار الذي خطط له التطبيق. وينطبق هذا أيضًا إذا كان العميل برنامجًا.</p>
-<p>يكون مسار التنقل صالحًا إذا كان عنوان <bdi dir="ltr" class="odt-ltr-term">URL</bdi> المطلوب هو عنوان يمكن الوصول إليه من آخر عرض تم تقديمه للمستخدم. من السهل تحديد قائمة عناوين <bdi dir="ltr" class="odt-ltr-term">URL</bdi> هذه. وهي تتكون من </p>
+<p>يمكن النظر إلى تطبيق الويب على أنه آلة ذات حالات محدودة. ترتبط الحالات المختلفة للتطبيق بالطرق المعروضة للمستخدم. وينتقل المستخدم إلى طريقة أخرى عن طريق رابط أو زر. وقد تغيرت حالة تطبيق الويب. لقد رأينا أن الإجراء يبدأ بطلب من نوع <strong><bdi dir="ltr" class="odt-ltr-term">http://machine:port/chemin/main.php</bdi>?<bdi dir="ltr" class="odt-ltr-term">action</bdi>=<bdi dir="ltr" class="odt-ltr-term">XX</bdi></strong>. يجب أن يأتي هذا <bdi dir="ltr" class="odt-ltr-term">URL</bdi> من رابط موجود في العرض المقدم للمستخدم. نريد في الواقع تجنب قيام المستخدم بكتابة <bdi dir="ltr" class="odt-ltr-term">URL</bdi> <strong><bdi dir="ltr" class="odt-ltr-term">http://machine:port/chemin/main.php</bdi>?<bdi dir="ltr" class="odt-ltr-term">action</bdi>=<bdi dir="ltr" class="odt-ltr-term">XX</bdi></strong> مباشرةً، مما يؤدي إلى تجاوز المسار الذي حددته له التطبيق. وينطبق هذا أيضًا إذا كان العميل برنامجًا.</p>
+<p>سيكون التسلسل صحيحًا إذا كان <bdi dir="ltr" class="odt-ltr-term">URL</bdi> المطلوب هو <bdi dir="ltr" class="odt-ltr-term">URL</bdi> الذي يمكن طلبه من آخر عرض تم تقديمه للمستخدم. من السهل تحديد قائمة هذه العروض. وهي تتكون </p>
 <ul>
-  <li>عناوين <bdi dir="ltr" class="odt-ltr-term">URL</bdi> الموجودة في العرض، إما كروابط أو كأهداف لإجراءات من نوع الإرسال
+  <li>من <bdi dir="ltr" class="odt-ltr-term">URL</bdi> الموجودة في العرض إما في شكل روابط أو في شكل أهداف إجراءات من نوع الإرسال
   </li>
-  <li>عناوين <bdi dir="ltr" class="odt-ltr-term">URL</bdi> التي يُسمح للمستخدم بكتابتها مباشرةً في متصفحه عند عرض العرض.
+  <li>من <bdi dir="ltr" class="odt-ltr-term">URL</bdi> التي يُسمح للمستخدم بكتابتها مباشرة في متصفحه عند عرض العرض عليه.
   </li>
 </ul>
 
-<p><strong>قائمة حالات التطبيق ليست بالضرورة هي نفس قائمة العروض</strong>. لنأخذ على سبيل المثال العرض البسيط التالي، <code>**erreurs.php**</code>:</p>
+<p><strong>لا تتطابق قائمة حالات التطبيق بالضرورة مع قائمة العروض</strong>. لنأخذ على سبيل المثال العرض الأساسي <strong><bdi dir="ltr" class="odt-ltr-term">erreurs.php</bdi></strong> التالي:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Les erreurs suivantes se sont produites :
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="cp">&lt;?php</span>
@@ -825,11 +825,11 @@
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;info&quot;</span><span class="p">&gt;</span><span class="cp">&lt;?php echo $dReponse[&quot;info&quot;] ?&gt;</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&lt;?php echo $dReponse[&quot;</span><span class="na">href</span><span class="err">&quot;]</span> <span class="err">?</span><span class="p">&gt;</span>&quot;&gt;<span class="cp">&lt;?php echo $dReponse[&quot;lien&quot;] ?&gt;</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>سيتم دمج هذا العرض الأساسي في تكوين من العروض الأساسية التي ستشكل الاستجابة. في هذا العرض، يوجد رابط يمكن وضعه ديناميكيًا. يمكن بعد ذلك عرض العرض <strong><bdi dir="ltr" class="odt-ltr-term">errors.php</bdi></strong> مع <strong>n</strong> روابط مختلفة حسب الظروف. سيؤدي هذا إلى <strong>n</strong> حالات مختلفة للتطبيق. في الحالة #i، سيتم عرض العرض <strong><bdi dir="ltr" class="odt-ltr-term">errors.php</bdi></strong> مع الرابط <strong><bdi dir="ltr" class="odt-ltr-term">lieni</bdi></strong>. في هذه الحالة، يُسمح فقط باستخدام <strong><bdi dir="ltr" class="odt-ltr-term">lieni</bdi></strong>.</p>
-<p>سيتم تخزين قائمة حالات التطبيق والإجراءات الممكنة في كل حالة في قاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">etats</bdi>&#x27;]</strong>: </p>
+<p>سيتم دمج هذا العرض الأساسي في مجموعة من العروض الأساسية التي ستشكل الاستجابة. يوجد في هذا العرض رابط يمكن وضعه ديناميكيًا. يمكن عندئذ عرض العرض <strong><bdi dir="ltr" class="odt-ltr-term">erreurs.php</bdi></strong> مع <strong>n</strong> روابط مختلفة حسب الظروف. سيؤدي ذلك إلى ظهور <strong>n</strong> حالات مختلفة للتطبيق. في الحالة رقم i، سيتم عرض العرض <strong><bdi dir="ltr" class="odt-ltr-term">erreurs.php</bdi></strong> مع الرابط <strong><bdi dir="ltr" class="odt-ltr-term">lieni</bdi></strong>. في هذه الحالة، لا يُقبل سوى استخدام <strong><bdi dir="ltr" class="odt-ltr-term">lieni</bdi></strong>.</p>
+<p>سيتم تسجيل قائمة حالات التطبيق والإجراءات الممكنة في كل حالة في القاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">etats</bdi>&#x27;]</strong>: </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="o">...</span>  
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1">// application status configuration</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1">// تكوين حالات التطبيق</span>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>  <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;etats&#39;</span><span class="p">][</span><span class="s1">&#39;e-formulaire&#39;</span><span class="p">]</span><span class="o">=</span><span class="k">array</span><span class="p">(</span>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>       <span class="s1">&#39;actionsautorisees&#39;</span><span class="o">=&gt;</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;post:calculerimpot&#39;</span><span class="p">,</span><span class="s1">&#39;get:init&#39;</span><span class="p">,</span><span class="s1">&#39;post:effacerformulaire&#39;</span><span class="p">),</span>
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="s1">&#39;vue&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;e-formulaire2.php&#39;</span><span class="p">);</span>
@@ -838,17 +838,17 @@
 <a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>      <span class="s1">&#39;vue&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;e-erreurs2.php&#39;</span><span class="p">);</span>
 <a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>  <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;etats&#39;</span><span class="p">][</span><span class="s1">&#39;sansetat&#39;</span><span class="p">]</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;actionsautorisees&#39;</span><span class="o">=&gt;</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;get:init&#39;</span><span class="p">));</span>
 </code></pre></div>
-<p>يحتوي التطبيق أعلاه على حالتين مسمايتين: <strong><bdi dir="ltr" class="odt-ltr-term">e-form</bdi></strong> و <strong><bdi dir="ltr" class="odt-ltr-term">e-errors</bdi></strong>. نضيف حالة تسمى <strong><bdi dir="ltr" class="odt-ltr-term">stateless</bdi>،</strong> والتي تتوافق مع بدء تشغيل التطبيق الأولي عندما لم يكن له حالة. في الحالة <bdi dir="ltr" class="odt-ltr-term">E</bdi>، توجد قائمة الإجراءات المسموح بها في المصفوفة <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">states</bdi>&#x27;][<bdi dir="ltr" class="odt-ltr-term">E</bdi>][&#x27;<bdi dir="ltr" class="odt-ltr-term">allowedActions</bdi>&#x27;]</strong>. وهي تحدد الطريقة المسموح بها (<bdi dir="ltr" class="odt-ltr-term">get/post</bdi>) للإجراء واسم الإجراء. في المثال أعلاه، هناك أربعة إجراءات ممكنة: <em><bdi dir="ltr" class="odt-ltr-term">get:init</bdi></em>، <em><bdi dir="ltr" class="odt-ltr-term">post:calculateTax</bdi></em>، <em><bdi dir="ltr" class="odt-ltr-term">get:returnForm</bdi>،</em> و <em><bdi dir="ltr" class="odt-ltr-term">post:clearForm</bdi></em>.</p>
-<p>باستخدام قاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">etats</bdi>&#x27;]</strong>, يمكن لوحدة التحكم تحديد ما إذا كان <strong>$<bdi dir="ltr" class="odt-ltr-term">sAction</bdi></strong> الحالي مسموحًا به في الحالة الحالية للتطبيق. يتم إنشاء هذه الحالة بواسطة كل إجراء وتخزينها في الجلسة في <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">etat</bdi>&#x27;]</strong>. فيما يلي كود وحدة التحكم للتحقق مما إذا كان الإجراء الحالي مسموحًا به:</p>
+<p>يحتوي التطبيق أعلاه على حالتين مسميتين: <strong><bdi dir="ltr" class="odt-ltr-term">e-formulaire</bdi></strong> و <strong><bdi dir="ltr" class="odt-ltr-term">e-erreurs</bdi></strong>. نضيف حالة تسمى <strong><bdi dir="ltr" class="odt-ltr-term">sansetat</bdi></strong> تتوافق مع بدء تشغيل التطبيق في البداية عندما لم يكن له حالة. في الحالة <strong><bdi dir="ltr" class="odt-ltr-term">E</bdi></strong>، توجد قائمة الإجراءات المسموح بها في الجدول <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">etats</bdi>&#x27;][<bdi dir="ltr" class="odt-ltr-term">E</bdi>][&#x27;<bdi dir="ltr" class="odt-ltr-term">actionsautorisees</bdi>&#x27;]</strong>. يتم تحديد الطريقة (<bdi dir="ltr" class="odt-ltr-term">get/post</bdi>) المسموح بها للإجراء واسمه. في المثال أعلاه، هناك أربعة إجراءات ممكنة: <em><bdi dir="ltr" class="odt-ltr-term">get:init</bdi></em>، <em><bdi dir="ltr" class="odt-ltr-term">post:alculerimpot</bdi></em>، <em><bdi dir="ltr" class="odt-ltr-term">get:retourformulaire</bdi></em> و <em><bdi dir="ltr" class="odt-ltr-term">post:effacerformulaire</bdi></em>.</p>
+<p>وباستخدام القاموس $<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">etats</bdi>&#x27;]، يمكن لوحدة التحكم تحديد ما إذا كانت الإجراء <strong>$<bdi dir="ltr" class="odt-ltr-term">sAction</bdi></strong> الجاري مسموحًا به أم لا في الحالة الحالية للتطبيق. يتم إنشاء هذا القيم بواسطة كل إجراء وتخزينه في الجلسة في <strong>$<bdi dir="ltr" class="odt-ltr-term">dSession</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">etat</bdi>&#x27;]</strong>. رمز وحدة التحكم للتحقق مما إذا كان الإجراء الحالي مسموحًا به أم لا هو كما يلي:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="o">.....</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>     <span class="c1">// is the sequence of actions normal?</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>     <span class="c1">// هل تسلسل الإجراءات طبيعي؟</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>  <span class="k">if</span><span class="p">(</span> <span class="o">!</span> <span class="nx">enchainementOK</span><span class="p">(</span><span class="nv">$dConfig</span><span class="p">,</span><span class="nv">$dSession</span><span class="p">,</span><span class="nv">$sAction</span><span class="p">)){</span>  
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>     <span class="c1">// abnormal sequence</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="c1">// تسلسل غير طبيعي</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="nv">$sAction</span><span class="o">=</span><span class="s1">&#39;enchainementinvalide&#39;</span><span class="p">;</span>
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>  <span class="p">}</span><span class="c1">//if</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>     <span class="c1">// share processing</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>     <span class="c1">// معالجة الإجراء</span>
 <a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>  <span class="nv">$scriptAction</span><span class="o">=</span><span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="nv">$sAction</span><span class="p">]</span> <span class="o">?</span> 
 <a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>    <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="nv">$sAction</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="o">:</span> 
 <a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>    <span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;actions&#39;</span><span class="p">][</span><span class="s1">&#39;actionInvalide&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">];</span>
@@ -856,32 +856,32 @@
 <a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="o">..........</span>
 <a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>  <span class="c1">//--------------------------------------------------------------------</span>
 <a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>    <span class="k">function</span> <span class="nf">enchainementOK</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$dConfig</span><span class="p">,</span><span class="o">&amp;</span><span class="nv">$dSession</span><span class="p">,</span><span class="nv">$sAction</span><span class="p">){</span>
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>       <span class="c1">// checks whether the current action is authorized with respect to the previous state</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>      <span class="c1">// التحقق مما إذا كان الإجراء الحالي مسموحًا به بالنسبة للحالة السابقة</span>
 <a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>    <span class="nv">$etat</span><span class="o">=</span><span class="nv">$dSession</span><span class="p">[</span><span class="s1">&#39;etat&#39;</span><span class="p">][</span><span class="s1">&#39;principal&#39;</span><span class="p">];</span>
 <a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>    <span class="k">if</span><span class="p">(</span><span class="o">!</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$etat</span><span class="p">))</span> <span class="nv">$etat</span><span class="o">=</span><span class="s1">&#39;sansetat&#39;</span><span class="p">;</span>
 <a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>
-<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>     <span class="c1">// check action</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>    <span class="c1">// التحقق من الإجراء</span>
 <a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>    <span class="nv">$actionsautorisees</span><span class="o">=</span><span class="nv">$dConfig</span><span class="p">[</span><span class="s1">&#39;etats&#39;</span><span class="p">][</span><span class="nv">$etat</span><span class="p">][</span><span class="s1">&#39;actionsautorisees&#39;</span><span class="p">];</span>
 <a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>    <span class="nv">$autorise</span><span class="o">=</span> <span class="o">!</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$actionsautorisees</span><span class="p">)</span> <span class="o">||</span> <span class="nb">in_array</span><span class="p">(</span><span class="nv">$sAction</span><span class="p">,</span><span class="nv">$actionsautorisees</span><span class="p">);</span>
 <a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>        <span class="k">return</span> <span class="nv">$autorise</span><span class="p">;</span>    
 <a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>  <span class="p">}</span>
 </code></pre></div>
-<p>المنطق هو كما يلي: يُسمح بإجراء <strong>$<bdi dir="ltr" class="odt-ltr-term">sAction</bdi></strong> إذا كان موجودًا في القائمة <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">states</bdi>&#x27;][$<bdi dir="ltr" class="odt-ltr-term">state</bdi>][&#x27;<bdi dir="ltr" class="odt-ltr-term">allowedActions</bdi>&#x27;],</strong> أو إذا كانت هذه القائمة غير موجودة، وفي هذه الحالة يُسمح بأي إجراء. <strong>$<bdi dir="ltr" class="odt-ltr-term">state</bdi></strong> هي حالة التطبيق في نهاية دورة طلب العميل/استجابة الخادم السابقة. تم تخزين هذه الحالة في الجلسة ويتم استردادها من هناك. إذا تبين أن الإجراء المطلوب غير صالح، يتم تنفيذ البرنامج النصي <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">actions</bdi>&#x27;][&#x27;<bdi dir="ltr" class="odt-ltr-term">invalidSequence</bdi>&#x27;][&#x27;url&#x27;]</strong>. سيتولى هذا البرنامج النصي إرسال استجابة مناسبة إلى العميل.</p>
-<p>خلال مرحلة التطوير، يمكن ترك قاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">etats</bdi>&#x27;]</strong> فارغًا. في هذه الحالة، تسمح أي حالة بأي إجراء. يمكن إتمام القاموس بمجرد الانتهاء من تصحيح أخطاء التطبيق بالكامل. سيحمي هذا القاموس التطبيق من الإجراءات غير المصرح بها.</p>
-<p><a id="refheading29966107341754"></a></p>
-<h2 id="38">3.8. <span style="color: #4f81bd">تصحيح الأخطاء</span></h2>
-<p>يوفر وحدة التحكم وظيفتين للتصحيح:</p>
+<p>المنطق هو كما يلي: يُسمح بإجراء <strong>$<bdi dir="ltr" class="odt-ltr-term">sAction</bdi></strong> إذا كان موجودًا في القائمة <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">etats</bdi>&#x27;][$<bdi dir="ltr" class="odt-ltr-term">etat</bdi>][&#x27;<bdi dir="ltr" class="odt-ltr-term">actionsautorisees</bdi>&#x27;]</strong> أو إذا كانت هذه القائمة غير موجودة مما يسمح عندئذ بأي إجراء. <strong>$<bdi dir="ltr" class="odt-ltr-term">etat</bdi></strong> هي حالة التطبيق في نهاية الدورة السابقة لطلب العميل/استجابة الخادم. تم تخزين هذه الحالة في الجلسة ويتم العثور عليها هناك. إذا تبين أن الإجراء المطلوب غير قانوني، يتم تنفيذ البرنامج النصي <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">actions</bdi>&#x27;][&#x27;<bdi dir="ltr" class="odt-ltr-term">enchainementInvalide</bdi>&#x27;][&#x27;url&#x27;]</strong>. سيتولى هذا البرنامج النصي إرسال استجابة مناسبة إلى العميل.</p>
+<p>في مرحلة التطوير، قد لا يتم ملء القاموس <strong>$<bdi dir="ltr" class="odt-ltr-term">dConfig</bdi>[&#x27;<bdi dir="ltr" class="odt-ltr-term">etats</bdi>&#x27;]</strong>. في هذه الحالة، تسمح أي حالة بأي إجراء. يمكن تطوير القاموس عندما يتم تصحيح أخطاء التطبيق بالكامل. سيحمي القاموس التطبيق من الإجراءات غير المصرح بها.</p>
+<p><span id="refheading29966107341754" name="refheading29966107341754" class="odt-bookmark-anchor"></span></p>
+<h2 id="38">3.8. <span style="color: #4f81bd">التصحيح</span></h2>
+<p>يوفر جهاز التحكم وظيفتين للتصحيح:</p>
 <ul>
-  <li>تعرض وظيفة <b>التتبع </b>رسالة في إخراج <bdi dir="ltr" class="odt-ltr-term">HTML</bdi>
+  <li>تسمح وظيفة <b>التتبع </b>بعرض رسالة في التدفق <bdi dir="ltr" class="odt-ltr-term">HTML</bdi>
   </li>
-  <li>تعرض وظيفة <b>التفريغ </b>محتويات القاموس في نفس الدفق
+  <li>تسمح وظيفة <b><bdi dir="ltr" class="odt-ltr-term">dump</bdi> </b>بعرض محتوى قاموس في نفس التدفق
   </li>
 </ul>
 
-<p>يمكن لأي برنامج نصي <bdi dir="ltr" class="odt-ltr-term">Action Script</bdi> استخدام هاتين الوظيفتين. ونظرًا لأن كود برنامج <bdi dir="ltr" class="odt-ltr-term">Action Script</bdi> مضمن في كود وحدة التحكم، فإن وظيفتي <strong>التتبع والتفريغ</strong> ستكونان مرئيتين للبرامج النصية.</p>
-<p><a id="refheading29968107341754"></a></p>
+<p>يمكن لأي سكريبت إجراء استخدام هاتين الوظيفتين. وبالفعل، بما أن كود سكريبت الإجراء مضمن (<bdi dir="ltr" class="odt-ltr-term">include</bdi>) في كود وحدة التحكم، فإن وظيفتي <strong><bdi dir="ltr" class="odt-ltr-term">trace</bdi></strong> و <strong><bdi dir="ltr" class="odt-ltr-term">dump</bdi></strong> ستكونان مرئيتين من السكريبتات.</p>
+<p><span id="refheading29968107341754" name="refheading29968107341754" class="odt-bookmark-anchor"></span></p>
 <h2 id="39">3.9. <span style="color: #4f81bd">الخلاصة</span></h2>
-<p>تم تصميم وحدة التحكم العامة لتمكين المطور من التركيز على الإجراءات وطرق العرض الخاصة بتطبيقه. وهي تتولى ما يلي نيابة عنه:</p>
+<p>يهدف وحدة التحكم العامة إلى تمكين المطور من التركيز على الإجراءات وطرق عرض تطبيقه. وهي تضمن له:</p>
 <ul>
   <li>إدارة الجلسة (الاستعادة، الحفظ)
   </li>
@@ -889,7 +889,7 @@
   </li>
   <li>تنفيذ البرنامج النصي المرتبط بالإجراء
   </li>
-  <li>إرسال استجابة إلى العميل تتناسب مع نتيجة تنفيذ الإجراء
+  <li>إرسال الرد المناسب إلى العميل بناءً على نتيجة تنفيذ الإجراء
   </li>
 </ul>
 
